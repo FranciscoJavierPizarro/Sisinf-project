@@ -1,9 +1,9 @@
 import Layout from '../components/Layout'
-
+import Link from 'next/link';
 export default function Home({cities}) {
   return (
     <h1 className="h-full bg-orange-600 capitalize text-white text-2xl text-center">
-      {cities.map(u => <p className="p-4" key={u.id}>{u.name}</p>)}
+      {cities.map(u => <p key={u.id}><Link className="p-4" href={"http://localhost:3000/"+u.id}>{u.name}</Link></p>)}
     </h1>
   );
 }
