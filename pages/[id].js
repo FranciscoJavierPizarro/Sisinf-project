@@ -19,7 +19,7 @@ export default function Home({city, cityPlaces}) {
         <p>{city.publisherId}</p>
         <p>{city.publishingDate}</p>
         <br></br>
-        {cityPlaces.map(u => <p key={u.id}>{u.name} <button onClick={(e) => {handleDelete(e,u,city)
+        {cityPlaces.map(u => <p key={u._id}>{u.name} <button onClick={(e) => {handleDelete(e,u,city)
       }}> borrame</button></p>)}
         <Link href={"http://localhost:3000/addPlace/" + city.id} className='test-white'>+</Link>
       </h1>
