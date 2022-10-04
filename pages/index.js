@@ -1,12 +1,15 @@
 import Layout from '../components/Layout'
 import Link from 'next/link';
+import CityCard from '@/components/CityCard';
 export default function Home({cities}) {
   return (
     <>
-      <h1 className="h-full bg-orange-600 capitalize text-white text-2xl text-center">
-        {cities.map(u => <p key={u.id}><Link className="p-4" href={"http://localhost:3000/"+u.id}>{u.name}</Link></p>)}
-        <Link href="http://localhost:3000/addCity" className='test-white'>+</Link>
-      </h1>
+      <div className='flex justify-center'>
+        <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
+          {cities.map(u => <CityCard key={u.id} title={u.name} urlCity={"http://localhost:3000/"+u.id} likes={0}/>)}
+          <Link href="http://localhost:3000/addCity" className='test-white'>Añadir ciudad</Link>
+        </h1>
+      </div>
     </>
   );
 }
