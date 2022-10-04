@@ -21,6 +21,7 @@ export default function AddCity() {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(city)
       })
+      location.href = "http://localhost:3000"
     }
   
     return (

@@ -24,6 +24,7 @@ export default function AddPlace(id) {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(place)
       })
+      location.href = "http://localhost:3000/" + id
     }
   
     return (
