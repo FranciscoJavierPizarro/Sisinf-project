@@ -21,7 +21,11 @@ export default function Home({city, cityPlaces}) {
         <br></br>
         {cityPlaces.map(u => <p key={u._id}>{u.name} <button onClick={(e) => {handleDelete(e,u,city)
       }}> borrame</button></p>)}
-        <Link href={"http://localhost:3000/addPlace/" + city.id} className='test-white'>+</Link>
+        <Link href={"http://localhost:3000/addPlace/" + city.id} className='test-white'>
+          <div className='capitalize w-40 mx-auto mt-8 text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
+            Añadir sitio
+          </div>
+        </Link>
       </h1>
     </>
   );
