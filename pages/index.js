@@ -1,9 +1,15 @@
 import Layout from '../components/Layout'
 import Link from 'next/link';
 import CityCard from '@/components/CityCard';
+import { useSession, signIn, signOut } from "next-auth/react"
+import Log from '@/components/Log';
+
 export default function Home({cities}) {
+  const { data: session } = useSession()
+
   return (
     <>
+      <Log session={session}/>
       <div className='flex justify-center'>
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
           {cities.map(u => <CityCard key={u.id} title={u.name} urlCity={"http://localhost:3000/"+u.id} likes={0}/>)}
