@@ -1,17 +1,8 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link';
+import PlaceCard from '@/components/PlaceCard';
 export default function Home({city, cityPlaces}) {
-  const handleDelete= async (e,place,city) => {
-    e.preventDefault()
-    console.log(place)
-    await fetch(`http://localhost:3000/api/places/` + place._id, {
-      method: "delete",
-      headers: {"Content-Type" : "application/json"},
-      body: JSON.stringify("")
-    })
-    location.href = "http://localhost:3000/" + city.id
-  }
-  
+    
   return (
     <>
       <h1 className="h-full bg-orange-600 capitalize text-white text-2xl text-center">
@@ -19,8 +10,10 @@ export default function Home({city, cityPlaces}) {
         <p>{city.publisherId}</p>
         <p>{city.publishingDate}</p>
         <br></br>
-        {cityPlaces.map(u => <p key={u._id}>{u.name} <button onClick={(e) => {handleDelete(e,u,city)
-      }}> borrame</button></p>)}
+
+
+        {cityPlaces.map(u => <PlaceCard key={u._id} title={u.name}
+         likes={0} idPlace={u._id} idCity={u.cityId} descp={u.descp}/>)}
         <Link href={"http://localhost:3000/addPlace/" + city.id} className='test-white'>
           <div className='capitalize w-40 mx-auto mt-8 text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
             Añadir sitio

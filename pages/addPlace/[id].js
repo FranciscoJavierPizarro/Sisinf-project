@@ -1,14 +1,14 @@
 import Layout from "@/components/Layout"
 export default function AddPlace(id) {
-    
-  
     const handleSubmit = async (e,id) => {
       id = id.id
       e.preventDefault()
-      const { name, publisherId } = e.target
-
+      const { name,descp, publisherId } = e.target
+      // console.log(e)
+      console.log(e.target)
       const place = {
         name: name.value,
+        descp: descp.value,
         publisherId: publisherId.value,
         publishingDate: new Date().toLocaleDateString('es-ES', {
           day: 'numeric',
@@ -24,7 +24,7 @@ export default function AddPlace(id) {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(place)
       })
-      location.href = "http://localhost:3000/" + id
+      // location.href = "http://localhost:3000/" + id
     }
   
     return (
@@ -38,12 +38,23 @@ export default function AddPlace(id) {
     >
       <div className="flex gap-x-2 mt-3">
         <label type="name" className="block">
-          <span className="text-sm text-white">Nombre de la ciudad</span>
+          <span className="text-sm text-white">Nombre del sitio</span>
           <input
             type="name"
             id="name"
             name="name"
             autoComplete="name"
+            className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
+            required
+          />
+        </label>
+        <label type="descp" className="block">
+          <span className="text-sm text-white">Descripción del sitio</span>
+          <input
+            type="descp"
+            id="descp"
+            descp="descp"
+            autoComplete="descp"
             className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
           />

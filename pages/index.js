@@ -1,15 +1,29 @@
 import Layout from '../components/Layout'
 import Link from 'next/link';
 import CityCard from '@/components/CityCard';
+import { FiUser } from "react-icons/fi";
 import { useSession, signIn, signOut } from "next-auth/react"
-import Log from '@/components/Log';
 
 export default function Home({cities}) {
   const { data: session } = useSession()
 
   return (
     <>
-      <Log session={session}/>
+      {session && 
+        <p>
+          Signed in as {session.user.email}
+        </p>
+      }
+      {!session && 
+        <>
+        <div className='grid justify-items-end'>
+          <FiUser className='h-11 w-11'/>
+          <button onClick={() => signIn()}>Sign in</button>
+          Not signed in <br/>
+          
+        </div></>
+      }
+       
       <div className='flex justify-center'>
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
           {cities.map(u => <CityCard key={u.id} title={u.name} urlCity={"http://localhost:3000/"+u.id} likes={0}/>)}
@@ -21,6 +35,9 @@ export default function Home({cities}) {
           
         </h1>
       </div>
+      {session && 
+        <button onClick={() => signOut()}>Sign out</button>
+      }
     </>
   );
 }

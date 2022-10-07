@@ -6,7 +6,7 @@ export default function Meta({ title }) {
       <meta charSet="UTF-8" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="Computer Science student"/>
+      <meta name="description" content="Social network for turistss"/>
       {/* <meta name="keywords" content="Computer Science, Developer, Student" />
       <meta property="og:title" content="Turisteo"/>
       <meta property="og:description" content="Ingeniero informático en formación, con muchas ganas de trabajar"/>
@@ -19,5 +19,5 @@ export default function Meta({ title }) {
 }
 
 Meta.defaultProps = {
-  title: "Turisteo",
+  title: "Turilist",
 }
