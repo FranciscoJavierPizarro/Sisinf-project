@@ -4,8 +4,6 @@ export default function AddPlace(id) {
       id = id.id
       e.preventDefault()
       const { name,descp, publisherId } = e.target
-      // console.log(e)
-      console.log(e.target)
       const place = {
         name: name.value,
         descp: descp.value,
@@ -24,7 +22,7 @@ export default function AddPlace(id) {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(place)
       })
-      // location.href = "http://localhost:3000/" + id
+      location.href = "http://localhost:3000/" + id
     }
   
     return (

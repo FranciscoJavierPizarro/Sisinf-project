@@ -8,11 +8,11 @@ export default function CityCard({title,likes,urlMaps,urlImg,urlCity}) {
            <div className="bg-gray-400 w-1/6 h-24 mt-8 ml-8 rounded-2xl">
                 <img src={"https://i.pinimg.com/564x/05/9e/4e/059e4ebb4a8f8b7753f66ff3333672ec.jpg"} className="mx-auto w-24 h-24 object-fill"/>
            </div>
-           <div className="ml-8  w-5/6 h-full">
+           <div className="ml-16  w-5/6 h-full">
                 <div className="text-right">
                     funcion por implementar
                 </div>
-                <div className="ml-8 flex w-full align-left font-semibold">
+                <div className="flex w-full align-left font-semibold">
                     <Link href={urlCity}>
                         {title}
                     </Link>
@@ -25,7 +25,7 @@ export default function CityCard({title,likes,urlMaps,urlImg,urlCity}) {
                         <FiThumbsUp/>
                     </sub>                   
                 </div>
-                <div>
+                <div className="text-left">
                     lorem ipsum
                 </div>
            </div>
