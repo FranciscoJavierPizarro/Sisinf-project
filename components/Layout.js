@@ -1,13 +1,28 @@
 import Meta from "./Meta"
-
+import { FiUser, FiLogOut } from "react-icons/fi";
+import { useSession, signIn, signOut } from "next-auth/react"
 export default function Layout({ children }) {
+  const { data: session } = useSession()
   return (
     <>
       <Meta />
-      <div className="h-screen flex bg-orange-600">
+      <div className="h-screen flex bg-background">
         <div className="flex-auto overflow-y-auto">
           <main className="h-screen">
+            {!session && 
+              <>
+              <div className='flex justify-end'>
+                <button onClick={() => signIn()} className='flex-col mr-4 mt-2 justify-center'>
+                  <FiUser className='mx-auto h-11 w-11'/>
+                  <p>Sign in</p>
+                </button>
+                
+              </div></>
+            }
             {children}
+            {session && 
+              <button className='absolute bottom-0 left-0 ml-4 mb-4' onClick={() => signOut()}><FiLogOut className='h-11 w-11'/></button>
+            }
           </main>
         </div>
       </div>

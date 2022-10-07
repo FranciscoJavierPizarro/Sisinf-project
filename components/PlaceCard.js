@@ -3,7 +3,9 @@ import { FiMapPin } from "react-icons/fi";
 import { FiHeart } from "react-icons/fi";
 import { FiTrash2 } from "react-icons/fi";
 import { FiStar } from "react-icons/fi";
+import { useSession } from "next-auth/react"
 export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlImg,urlCity}) {
+    const { data: session } = useSession()
     const handleDelete= async (e,place,city) => {
         e.preventDefault()
         await fetch(`http://localhost:3000/api/places/` + place, {
@@ -22,10 +24,11 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlI
            </div>
            <div className="ml-16  w-5/6 h-full align-right">
                 <div className="flex mr-4 mt-4 justify-end text-right">
-                <button className="ml-2 text-gray-500" onClick={(e) => {handleDelete(e,idPlace,idCity)}}>
+                    {session && <><button className="ml-2 text-gray-500" onClick={(e) => {handleDelete(e,idPlace,idCity)}}>
                         <FiTrash2/>
                     </button>
                     <FiStar className="ml-2 h-6 w-6 text-yellow-500"/>
+                    </>}
                     <FiHeart className="ml-1.5 h-6 w-6 text-red-600"/>
                     <sub className="ml-0 mt-3 text-gray-500">
                         {likes}

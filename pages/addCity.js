@@ -1,14 +1,19 @@
 import Layout from "@/components/Layout"
+import { useSession } from "next-auth/react"
+
 export default function AddCity() {
     
-  
-    const handleSubmit = async (e) => {
+  const { data: session } = useSession()
+  const handleSubmit = async (e,session) => {
       e.preventDefault()
-      const { name, publisherId } = e.target
-
+      const { name, descp, maps, photo } = e.target
+      console.log(descp.value)
       const city = {
         name: name.value,
-        publisherId: publisherId.value,
+        descp: descp.value,
+        publisherId: session.user.email,
+        mapsUrl:maps.value,
+        photoUrl:photo.value,
         publishingDate: new Date().toLocaleDateString('es-ES', {
           day: 'numeric',
           month: 'numeric',
@@ -26,47 +31,74 @@ export default function AddCity() {
   
     return (
       <>
-      {/* <h1 className="text-3xl font-bold underline">
-        <button onClick={() => handleSubmit()}>click</button>
-      </h1> */}
+      <div className="flex justify-center">
+        
       <form
       method="post"
       onSubmit={(e) => {
-        handleSubmit(e)
+        handleSubmit(e,session)
       }}
       className="mt-4"
-    >
-      <div className="flex gap-x-2 mt-3">
-        <label type="name" className="block">
-          <span className="text-sm text-white">Nombre de la ciudad</span>
+      >
+      <div className="grid justify-items-center gap-x-2 mt-1 mb-10">
+        <label type="name" className="block w-full">
+          <span className="text-2xl self-auto text-black">Añadir una ciudad/pueblo</span>
+  
+        </label>
+      </div>
+      <div className="flex gap-x-2 mt-1">
+        <label type="name" className="block w-full">
+          <span className="text-sm self-auto text-black">Añadir nombre de ciudad:</span>
           <input
             type="name"
             id="name"
             name="name"
             autoComplete="name"
-            className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
+            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
           />
         </label>
-        <label type="publisherId" className="block">
-          <span className="text-sm text-white">ID del usuario que lo publica</span>
+      </div>
+      <div className="flex gap-x-2 mt-1">
+        <label className="block w-full">
+          <span className="text-sm self-auto text-black">Añadir URl de Google Maps:</span>
           <input
-            type="publisherId"
-            id="publisherId"
-            name="publisherId"
-            autoComplete="last name"
-            className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
+            type="maps"
+            id="maps"
+            name="maps"
+            autoComplete="maps"
+            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
           />
         </label>
-      </div> 
+      </div>
+      <div className="flex gap-x-2 mt-1">
+        <label className="block w-full">
+          <span className="text-sm self-auto text-black">Añadir URL foto:</span>
+          <input
+            type="photo"
+            id="photo"
+            name="photo"
+            autoComplete="photo"
+            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+            required
+            />
+        </label>
+      </div>
+        <div className="gap-x-2 mt-2">
+        <span className="text-sm text-black">Añadir descripción del sitio:</span>
+          <textarea id="descp" rows="4" class="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
+      </div>
+            
+             
       <button
               type="submit"
-              className="capitalize w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-white bg-blue-600 rounded-md hover:bg-blue-700"
-            >
-              Register
+              className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
+              >
+              Añadir
             </button>
       </form>
+      </div>
       </>
     );
   }
