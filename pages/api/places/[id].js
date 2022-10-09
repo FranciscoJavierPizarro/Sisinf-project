@@ -23,14 +23,11 @@ export default async function handler(req, res) {
     await Place.deleteOne({_id: id})
     res.status(204).json()
   }
-//   else if (method === "PUT") {
-//     const {id} = req.query
-//     const {name, lastName} = req.body
-//     const user = await User.findByIdAndUpdate(id, {
-//       name,
-//       lastName
-//     }, {new: true})
-//     res.status(200).json(cleanSchema(user))
-//   } 
+  else if (method === "PUT") {
+    const {id} = req.query
+    const {name, descp, publisherId,publishingDate,cityId,favs } = req.body
+    const place = await Place.findByIdAndUpdate(id, {name, descp, publisherId,publishingDate,cityId,favs}, {new: true})
+    res.status(200).json(cleanSchema(place))
+  } 
 }
 

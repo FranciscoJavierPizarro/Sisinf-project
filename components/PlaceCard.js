@@ -1,11 +1,11 @@
 import Link from "next/link"
-import { FiMapPin } from "react-icons/fi";
-import { FiHeart } from "react-icons/fi";
-import { FiTrash2 } from "react-icons/fi";
-import { FiStar } from "react-icons/fi";
+import { FiTrash2,FiStar,FiHeart,FiMapPin } from "react-icons/fi";
+import React, { useState } from 'react';
 import { useSession } from "next-auth/react"
 export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlImg,urlCity}) {
     const { data: session } = useSession()
+    const [likeado, setLikeado] = useState(false);
+    const [nlikes, setLikes] = useState(likes);
     const handleDelete= async (e,place,city) => {
         e.preventDefault()
         await fetch(`http://localhost:3000/api/places/` + place, {
@@ -14,6 +14,49 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlI
           body: JSON.stringify("")
         })
         location.href = "http://localhost:3000/" + city
+    }
+    const isLiked = async (idPlace, session) => {
+        const liked = await fetch(`http://localhost:3000/api/likes/` +idPlace+"/"+session.user.email,).then(res => res.json())
+        return (liked.length != 0)
+    }
+
+    const handleLike = async(e,idPlace,session,likeso) => {
+        e.preventDefault()
+        const alreadyLiked = await isLiked(idPlace,session)
+        if(alreadyLiked) {
+            await fetch(`http://localhost:3000/api/places/` + idPlace, {
+              method: "put",
+              headers: {"Content-Type" : "application/json"},
+              body: JSON.stringify({favs:(likes-1)})
+            })
+            await fetch(`http://localhost:3000/api/likes/`, {
+              method: "delete",
+              headers: {"Content-Type" : "application/json"},
+              body: JSON.stringify({placeId:idPlace,userId:session.user.email})
+            })
+        }
+        else {
+            await fetch(`http://localhost:3000/api/places/` + idPlace, {
+              method: "put",
+              headers: {"Content-Type" : "application/json"},
+              body: JSON.stringify({favs:(likes+1)})
+            })
+            await fetch(`http://localhost:3000/api/likes/`, {
+              method: "post",
+              headers: {"Content-Type" : "application/json"},
+              body: JSON.stringify({placeId:idPlace,userId:session.user.email})
+            })
+        }
+    }
+
+    function corazon(Likeado) {
+        if (likeado) {
+            return <>
+            <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-red-500"}/>
+            </>;
+          }
+          return <>
+          <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-transparent"}/></>;
     }
 
     return (
@@ -28,11 +71,16 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlI
                         <FiTrash2/>
                     </button>
                     <FiStar className="ml-2 h-6 w-6 text-yellow-500"/>
-                    </>}
-                    <FiHeart className="ml-1.5 h-6 w-6 text-red-600"/>
+                    <button onClick={(e) => {setLikeado(!likeado)
+                        setLikes(nlikes + (likeado? -1:1))
+                        handleLike(e,idPlace,session,likes)}}>
+                        {corazon(likeado)}
+                    </button>
+                    {/* mover la cantidad de likes de sitio */}
                     <sub className="ml-0 mt-3 text-gray-500">
-                        {likes}
+                        {nlikes}
                     </sub>
+                    </>}
                 </div>
                 <div className="flex w-full align-left font-semibold">
                     {/* <Link href={urlCity}> */}
