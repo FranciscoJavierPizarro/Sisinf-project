@@ -8,11 +8,12 @@ export default function AddPlace(id) {
         name: name.value,
         descp: descp.value,
         publisherId: publisherId.value,
-        publishingDate: new Date().toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'numeric',
-          year: 'numeric',
-        }),
+        // publishingDate: new Date().toLocaleDateString('es-ES', {
+        //   year: 'numeric',
+        //   month: 'numeric',
+        //   day: 'numeric',
+        // }),
+        publisherDate:'2022/10/13',
         cityId: id,
         favs: 0
       }
