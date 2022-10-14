@@ -2,10 +2,12 @@ import Layout from '@/components/Layout'
 import Link from 'next/link';
 import PlaceCard from '@/components/PlaceCard';
 import { useSession } from "next-auth/react"
+import Sidebar from '@/components/Sidebar';
 export default function Home({city, cityPlaces}) {
   const { data: session } = useSession()
   return (
     <>
+      <Sidebar/>
       <div className="h-full capitalize text-white text-2xl text-center">
         <p>{city.name}</p>
         <p>{city.publisherId}</p>
@@ -14,7 +16,7 @@ export default function Home({city, cityPlaces}) {
 
 
         {cityPlaces.map(u => <PlaceCard key={u._id} title={u.name}
-         likes={u.favs} idPlace={u._id} idCity={u.cityId} descp={u.descp}/>)}
+         likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl}  descp={u.descp}/>)}
         
         {session && 
           <Link href={"http://localhost:3000/addPlace/" + city.id} className='test-white'>

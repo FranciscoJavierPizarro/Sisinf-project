@@ -1,17 +1,19 @@
 import Layout from "@/components/Layout"
 import { useSession } from "next-auth/react"
+
 export default function AddPlace(id) {
+
     const { data: session } = useSession()
     const handleSubmit = async (e,id,session) => {
       id = id.id
       e.preventDefault()
-      const { name,descp } = e.target
+      const { name, descp, maps, photo } = e.target
       const place = {
         name: name.value,
         descp: descp.value,
         publisherId: session.user.email,
-        // mapsUrl:maps.value,
-        // photoUrl:photo.value,
+        mapsUrl:maps.value,
+        photoUrl:photo.value,
         // publishingDate: new Date().toLocaleDateString('es-ES', {
         //   year: 'numeric',
         //   month: 'numeric',
@@ -21,7 +23,6 @@ export default function AddPlace(id) {
         cityId: id,
         favs: 0
       }
-
       await fetch(`http://localhost:3000/api/places/`, {
         method: "post",
         headers: {"Content-Type" : "application/json"},
@@ -60,7 +61,7 @@ export default function AddPlace(id) {
           />
         </label>
       </div>
-      {/* <div className="flex gap-x-2 mt-1">
+      <div className="flex gap-x-2 mt-1">
         <label className="block w-full">
           <span className="text-sm self-auto text-black">Añadir URl de Google Maps:</span>
           <input
@@ -85,7 +86,7 @@ export default function AddPlace(id) {
             required
             />
             </label> 
-          </div>  */}
+          </div> 
         <div className="gap-x-2 mt-2">
         <span className="text-sm text-black">Añadir descripción del sitio:</span>
           <textarea id="descp" rows="4" className="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
@@ -97,7 +98,7 @@ export default function AddPlace(id) {
               Añadir
             </button>
       </form>
-    </div>
+      </div>
       </>
     );
   }

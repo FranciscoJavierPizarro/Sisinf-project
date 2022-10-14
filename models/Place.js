@@ -7,6 +7,12 @@ const PlaceSchema = new mongoose.Schema({
   descp: {
     type: String,
   },
+  mapsUrl: {
+    type: String,
+  },
+  photoUrl: {
+    type: String,
+  },
   publisherId: {
     type: String,
   },

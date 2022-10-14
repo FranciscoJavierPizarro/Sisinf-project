@@ -6,8 +6,8 @@ export default function CityCard({title,descp,likes,urlMaps,urlImg,urlCity}) {
     return (
         <>
         <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600">
-           <div className="bg-gray-400 w-1/6 h-24 mt-8 ml-8 rounded-2xl">
-                <img src={urlImg} className="mx-auto w-24 h-24 object-fill"/>
+           <div className="w-1/6 h-24 mt-8 ml-8 rounded-2xl">
+                <img src={urlImg} className="mx-auto w-24 h-24"/>
            </div>
            <div className="ml-16  w-5/6 h-full">
                 <div className="text-right">

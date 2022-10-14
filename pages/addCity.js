@@ -86,7 +86,7 @@ export default function AddCity() {
             />
         </label>
       </div>
-        <div className="gap-x-2 mt-2">
+      <div className="gap-x-2 mt-2">
         <span className="text-sm text-black">Añadir descripción del sitio:</span>
           <textarea id="descp" rows="4" class="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
       </div>

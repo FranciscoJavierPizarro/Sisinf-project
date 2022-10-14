@@ -2,7 +2,8 @@ import Link from "next/link"
 import { FiTrash2,FiStar,FiHeart,FiMapPin } from "react-icons/fi";
 import React, { useState } from 'react';
 import { useSession } from "next-auth/react"
-export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlImg,urlCity}) {
+
+export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlPhotos}) {
     const { data: session } = useSession()
     const [likeado, setLikeado] = useState(false);
     const [nlikes, setLikes] = useState(likes);
@@ -62,8 +63,9 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlI
     return (
         <>
         <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600">
-           <div className="bg-gray-400 w-1/6 h-24 mt-8 ml-8 rounded-2xl">
-                <img src={"https://i.pinimg.com/564x/05/9e/4e/059e4ebb4a8f8b7753f66ff3333672ec.jpg"} className="mx-auto w-24 h-24 object-fill"/>
+           <div className="w-1/6 h-24 mt-8 ml-8 rounded-2xl">
+           
+           <img src={urlPhotos} className="mx-auto w-24 h-24"/>
            </div>
            <div className="ml-16  w-5/6 h-full align-right">
                 <div className="flex mr-4 mt-4 justify-end text-right">
@@ -83,14 +85,14 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlI
                     </>}
                 </div>
                 <div className="flex w-full align-left font-semibold">
-                    {/* <Link href={urlCity}> */}
                         {title}
-                    {/* </Link> */}
-                    <FiMapPin className="ml-8 text-red-400"/>
-                                  
+                    
+                    <Link href={urlMaps} className="hover:cursor-pointer">
+                        <FiMapPin className="ml-8 text-red-400 hover:cursor-pointer"/>
+                    </Link>
                 </div>
                 <div className="text-black text-left">
-                    {descp}
+                    {descp} 
                 </div>
         </div>
         </div>

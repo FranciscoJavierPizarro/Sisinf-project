@@ -19,10 +19,15 @@ export default function Layout({ children }) {
                 
               </div></>
             }
-            {children}
-            {session && 
+            {/* {session && 
               <button className='absolute bottom-0 left-0 ml-4 mb-4' onClick={() => signOut()}><FiLogOut className='h-11 w-11'/></button>
-            }
+            } */}
+            
+            {/* {session && 
+              <Sidebar/>
+            } */}
+            {children}
+            
           </main>
         </div>
       </div>

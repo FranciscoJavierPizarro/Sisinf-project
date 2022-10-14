@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import Link from 'next/link';
 import CityCard from '@/components/CityCard';
 import { useSession } from "next-auth/react"
+import Sidebar from '@/components/Sidebar';
 
 export default function Home({cities}) {
   const { data: session } = useSession()
@@ -10,7 +11,8 @@ export default function Home({cities}) {
     <>
      
        
-      <div className='flex justify-center'>
+      <div className='w-full flex justify-center'>
+        <Sidebar/>
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
           {cities.map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp ={u.descp} urlCity={"http://localhost:3000/"+u.id} likes={0}/>)}
             {session &&
