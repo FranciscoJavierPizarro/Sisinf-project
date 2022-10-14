@@ -14,11 +14,12 @@ export default function AddCity() {
         publisherId: session.user.email,
         mapsUrl:maps.value,
         photoUrl:photo.value,
-        publishingDate: new Date().toLocaleDateString('es-ES', {
-          day: 'numeric',
-          month: 'numeric',
-          year: 'numeric',
-        })
+        // publishingDate: new Date().toLocaleDateString('es-ES', {
+        //   day: 'numeric',
+        //   month: 'numeric',
+        //   year: 'numeric',
+        // })
+        publisherDate:'2022/10/13',
       }
 
       await fetch(`http://localhost:3000/api/cities/`, {

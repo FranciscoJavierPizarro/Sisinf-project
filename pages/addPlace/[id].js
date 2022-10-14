@@ -1,15 +1,17 @@
 import Layout from "@/components/Layout"
+import { useSession } from "next-auth/react"
 export default function AddPlace(id) {
-    const handleSubmit = async (e,id) => {
+    const { data: session } = useSession()
+    const handleSubmit = async (e,id,session) => {
       id = id.id
       e.preventDefault()
-      const { name,descp, publisherId } = e.target
+      const { name,descp } = e.target
       const place = {
         name: name.value,
         descp: descp.value,
         publisherId: session.user.email,
-        mapsUrl:maps.value,
-        photoUrl:photo.value,
+        // mapsUrl:maps.value,
+        // photoUrl:photo.value,
         // publishingDate: new Date().toLocaleDateString('es-ES', {
         //   year: 'numeric',
         //   month: 'numeric',
@@ -30,10 +32,12 @@ export default function AddPlace(id) {
   
     return (
       <>
+      <div className="flex justify-center">
+
       <form
       method="post"
       onSubmit={(e) => {
-        handleSubmit(e,id)
+        handleSubmit(e,id,session)
       }}
       className="mt-4"
     >
@@ -56,7 +60,7 @@ export default function AddPlace(id) {
           />
         </label>
       </div>
-      <div className="flex gap-x-2 mt-1">
+      {/* <div className="flex gap-x-2 mt-1">
         <label className="block w-full">
           <span className="text-sm self-auto text-black">Añadir URl de Google Maps:</span>
           <input
@@ -80,11 +84,11 @@ export default function AddPlace(id) {
             className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
             />
-        </label>
-      </div>
+            </label> 
+          </div>  */}
         <div className="gap-x-2 mt-2">
         <span className="text-sm text-black">Añadir descripción del sitio:</span>
-          <textarea id="descp" rows="4" class="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
+          <textarea id="descp" rows="4" className="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
       </div>
       <button
               type="submit"
@@ -93,6 +97,7 @@ export default function AddPlace(id) {
               Añadir
             </button>
       </form>
+    </div>
       </>
     );
   }
