@@ -7,7 +7,9 @@ export default function AddPlace(id) {
       const place = {
         name: name.value,
         descp: descp.value,
-        publisherId: publisherId.value,
+        publisherId: session.user.email,
+        mapsUrl:maps.value,
+        photoUrl:photo.value,
         // publishingDate: new Date().toLocaleDateString('es-ES', {
         //   year: 'numeric',
         //   month: 'numeric',
@@ -35,46 +37,60 @@ export default function AddPlace(id) {
       }}
       className="mt-4"
     >
-      <div className="flex gap-x-2 mt-3">
-        <label type="name" className="block">
-          <span className="text-sm text-white">Nombre del sitio</span>
+      <div className="grid justify-items-center gap-x-2 mt-1 mb-10">
+        <label type="name" className="block w-full">
+          <span className="text-2xl self-auto text-black">Añadir un sitio</span>
+  
+        </label>
+      </div>
+      <div className="flex gap-x-2 mt-1">
+        <label type="name" className="block w-full">
+          <span className="text-sm self-auto text-black">Añadir nombre del sitio:</span>
           <input
             type="name"
             id="name"
             name="name"
             autoComplete="name"
-            className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
+            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
           />
         </label>
-        <label type="descp" className="block">
-          <span className="text-sm text-white">Descripción del sitio</span>
+      </div>
+      <div className="flex gap-x-2 mt-1">
+        <label className="block w-full">
+          <span className="text-sm self-auto text-black">Añadir URl de Google Maps:</span>
           <input
-            type="descp"
-            id="descp"
-            descp="descp"
-            autoComplete="descp"
-            className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
+            type="maps"
+            id="maps"
+            name="maps"
+            autoComplete="maps"
+            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
           />
         </label>
-        <label type="publisherId" className="block">
-          <span className="text-sm text-white">ID del usuario que lo publica</span>
+      </div>
+      <div className="flex gap-x-2 mt-1">
+        <label className="block w-full">
+          <span className="text-sm self-auto text-black">Añadir URL foto:</span>
           <input
-            type="publisherId"
-            id="publisherId"
-            name="publisherId"
-            autoComplete="last name"
-            className="block w-full px-3 py-2 mt-1 text-white border rounded-md form-input focus:border-blue-600 bg-transparent"
+            type="photo"
+            id="photo"
+            name="photo"
+            autoComplete="photo"
+            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
             required
-          />
+            />
         </label>
-      </div> 
+      </div>
+        <div className="gap-x-2 mt-2">
+        <span className="text-sm text-black">Añadir descripción del sitio:</span>
+          <textarea id="descp" rows="4" class="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
+      </div>
       <button
               type="submit"
-              className="capitalize w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-white bg-blue-600 rounded-md hover:bg-blue-700"
-            >
-              Register
+              className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
+              >
+              Añadir
             </button>
       </form>
       </>
