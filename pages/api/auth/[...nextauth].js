@@ -22,6 +22,7 @@ export default NextAuth({
     // ...add more providers here
   ],
   secret:process.env.JWT_SECRET,
+})
 //   jwt: {
 //     encryption: true,
 //   },
@@ -41,100 +42,51 @@ export default NextAuth({
 //   }
 
   
-})
 
 
-// const GOOGLE_AUTHORIZATION_URL =
-//   "https://accounts.google.com/o/oauth2/v2/auth?" +
-//   new URLSearchParams({
-//     prompt: "consent",
-//     access_type: "offline",
-//     response_type: "code",
-//   })
-
-// /**
-//  * Takes a token, and returns a new token with updated
-//  * `accessToken` and `accessTokenExpires`. If an error occurs,
-//  * returns the old token and an error property
-//  */
-// async function refreshAccessToken(token) {
-//   try {
-//     const url =
-//       "https://oauth2.googleapis.com/token?" +
-//       new URLSearchParams({
-//         client_id: process.env.GOOGLE_CLIENT_ID,
-//         client_secret: process.env.GOOGLE_CLIENT_SECRET,
-//         grant_type: "refresh_token",
-//         refresh_token: token.refreshToken,
-//       })
-
-//     const response = await fetch(url, {
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded",
-//       },
-//       method: "POST",
-//     })
-
-//     const refreshedTokens = await response.json()
-
-//     if (!response.ok) {
-//       throw refreshedTokens
-//     }
-
-//     return {
-//       ...token,
-//       accessToken: refreshedTokens.access_token,
-//       accessTokenExpires: Date.now() + refreshedTokens.expires_at * 10000000,
-//       refreshToken: refreshedTokens.refresh_token ?? token.refreshToken, // Fall back to old refresh token
-//     }
-//   } catch (error) {
-//     console.log(error)
-
-//     return {
-//       ...token,
-//       error: "RefreshAccessTokenError",
-//     }
-//   }
-// }
-
+// import NextAuth from 'next-auth';
+// import Providers from 'next-auth/providers/credentials';
+// import dbConnect from '@/models/dbConnect';
+// import { compare } from 'bcryptjs';
+// import User from '@/models/User';
 // export default NextAuth({
-//   providers: [
-//     GoogleProvider({
-//       clientId: process.env.GOOGLE_CLIENT_ID,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//       authorization: GOOGLE_AUTHORIZATION_URL,
-//     }),
-//     GithubProvider({
-//         clientId: process.env.GITHUB_ID,
-//         clientSecret: process.env.GITHUB_SECRET,
-//     }),
-//   ],
-//   callbacks: {
-//     async jwt({ token, user, account }) {
-//       // Initial sign in
-//       if (account && user) {
-//         return {
-//           accessToken: account.access_token,
-//           accessTokenExpires: Date.now() + account.expires_at * 1000,
-//           refreshToken: account.refresh_token,
-//           user,
-//         }
-//       }
-
-//       // Return previous token if the access token has not expired yet
-//       if (Date.now() < token.accessTokenExpires) {
-//         return token
-//       }
-
-//       // Access token has expired, try to update it
-//       return refreshAccessToken(token)
+//     //Configure JWT
+//     session: {
+//         jwt: true,
 //     },
-//     async session({ session, token }) {
-//       session.user = token.user
-//       session.accessToken = token.accessToken
-//       session.error = token.error
-
-//       return session
-//     },
-//   },
-// })
+//     //Specify Provider
+//     providers: [
+//         Providers({
+//             async authorize(credentials) {
+//                 //Connect to DB
+                
+//                 //Get all the users
+//                 await dbConnect()
+//                 //Find user with the email  
+//                 const result = await User.findOne({
+//                     gmail: credentials.gmail,
+//                 });
+//                 //Not found - send error res
+//                 if (!result) {
+             
+//                     throw new Error('No user found with the gmail');
+//                 }
+//                 //Check hased password with DB password
+//                 const checkPassword = await compare(credentials.passowrd, result.passowrd);
+//                 //Incorrect password - send response
+//                 if (!checkPassword) {
+             
+//                     throw new Error('Password doesnt match');
+//                 }
+//                 //Else send success response
+         
+//                 // return { gmail: result.gmail };
+//                 return session
+//             },
+//         }),
+//     ],
+// pages: {
+//   signIn: "/login",
+//   error: "/login",
+// },
+// });

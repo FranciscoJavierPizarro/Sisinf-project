@@ -19,6 +19,9 @@ const CitySchema = new mongoose.Schema({
   publishingDate: {
     type: Date,
   },
+  Validacion: {
+    type: Boolean,
+  },
 });
 
 export default mongoose.models.City || mongoose.model('City', CitySchema);

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.12",
+    "bcryptjs": "^2.4.3",
     "mongoose": "^6.6.2",
     "next": "12.3.1",
     "next-auth": "^4.12.3",

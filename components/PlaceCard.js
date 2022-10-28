@@ -50,7 +50,7 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlP
         }
     }
 
-    function corazon(Likeado) {
+    function corazon(likeado) {
         if (likeado) {
             return <>
             <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-red-500"}/>
@@ -69,7 +69,8 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlP
            </div>
            <div className="ml-16  w-5/6 h-full align-right">
                 <div className="flex mr-4 mt-4 justify-end text-right">
-                    {session && <><button className="ml-2 text-gray-500" onClick={(e) => {handleDelete(e,idPlace,idCity)}}>
+                    {session && <>
+                    <button className="ml-2 text-gray-500" onClick={(e) => {handleDelete(e,idPlace,idCity)}}>
                         <FiTrash2/>
                     </button>
                     <FiStar className="ml-2 h-6 w-6 text-yellow-500"/>
