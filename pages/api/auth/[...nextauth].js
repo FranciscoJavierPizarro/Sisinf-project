@@ -1,92 +1,76 @@
 import NextAuth from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
-export default NextAuth({
-  // Configure one or more authentication providers
+import CryptoJS from "crypto-js"
+
+export const authOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
     GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        authorization: {
-            params: {
-              prompt: "consent",
-              access_type: "offline",
-              response_type: "code"
-            }
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    }),
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials, req) {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(credentials.username),
+        }).then((res) => res.json())
+
+        let user = null
+        const { id, userName, email, salt, passwd } = res.user
+        if (
+          CryptoJS.SHA512(salt + credentials.password).toString() === passwd
+        ) {
+          user = {
+            id: id,
+            name: userName,
+            email: email,
           }
-      })
-    // ...add more providers here
-  ],
-  secret:process.env.JWT_SECRET,
-})
-//   jwt: {
-//     encryption: true,
-//   },
-//   callbacks : {
-//     async jwt ( token , account ) {
-//         if ( account?.accessToken ) {
-//             token.accessToken = account.accessToken
-//         }
-//         return token
-//     } ,
-//     redirect : async(url , _baseUrl) =>{
-//         if ( url === '/' ) {
-//             return Promise.resolve ( '/' ) ;
-//         }
-//         return Promise.resolve ( '/' ) ;
-//     }
-//   }
-
+        }
   
+        if (user) {
+          return user
+        } else {
+          return null
+        }
+      }
+    })
+  ],
+  callbacks: {
+    jwt: ({ token, user }) => {
+      if (user) token.id = user.id
+      return token
+    },
+    session: (session, token) => {
+      if (token) session.id = token.id
+      return session
+    },
+  },
+  secret: process.env.SECRET,
+  jwt: {
+    secret: process.env.SECRET,
+    encryption: true,
+  },
+  session: {
+    jwt: true,
+    // Seconds - How long until an idle session expires and is no longer valid.
+    maxAge: 24 * 60 * 60, // 1 day
+  },
+  pages: {
+    signIn: "/login",
+    error: "/login",
+  },
+}
 
-
-// import NextAuth from 'next-auth';
-// import Providers from 'next-auth/providers/credentials';
-// import dbConnect from '@/models/dbConnect';
-// import { compare } from 'bcryptjs';
-// import User from '@/models/User';
-// export default NextAuth({
-//     //Configure JWT
-//     session: {
-//         jwt: true,
-//     },
-//     //Specify Provider
-//     providers: [
-//         Providers({
-//             async authorize(credentials) {
-//                 //Connect to DB
-                
-//                 //Get all the users
-//                 await dbConnect()
-//                 //Find user with the email  
-//                 const result = await User.findOne({
-//                     gmail: credentials.gmail,
-//                 });
-//                 //Not found - send error res
-//                 if (!result) {
-             
-//                     throw new Error('No user found with the gmail');
-//                 }
-//                 //Check hased password with DB password
-//                 const checkPassword = await compare(credentials.passowrd, result.passowrd);
-//                 //Incorrect password - send response
-//                 if (!checkPassword) {
-             
-//                     throw new Error('Password doesnt match');
-//                 }
-//                 //Else send success response
-         
-//                 // return { gmail: result.gmail };
-//                 return session
-//             },
-//         }),
-//     ],
-// pages: {
-//   signIn: "/login",
-//   error: "/login",
-// },
-// });
+export default NextAuth(authOptions)
