@@ -21,14 +21,11 @@ export default async function handler(req, res) {
     await City.deleteOne({_id: id})
     res.status(204).json()
   }
-//   else if (method === "PUT") {
-//     const {id} = req.query
-//     const {name, lastName} = req.body
-//     const user = await User.findByIdAndUpdate(id, {
-//       name,
-//       lastName
-//     }, {new: true})
-//     res.status(200).json(cleanSchema(user))
-//   } 
+  else if (method === "PUT") {//actualizar campos por los de city y no places
+    const {id} = req.query
+    const {name, descp, publisherId,publishingDate,cityId,Validacion } = req.body
+    const city = await City.findByIdAndUpdate(id, {name, descp, publisherId,publishingDate,cityId,Validacion}, {new: true})
+    res.status(200).json(cleanSchema(city))
+  } 
 }
 

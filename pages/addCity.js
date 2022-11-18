@@ -14,6 +14,7 @@ export default function AddCity() {
         publisherId: session.user.email,
         mapsUrl:maps.value,
         photoUrl:photo.value,
+        Validacion:false,
         // publishingDate: new Date().toLocaleDateString('es-ES', {
         //   day: 'numeric',
         //   month: 'numeric',
@@ -94,7 +95,7 @@ export default function AddCity() {
              
       <button
               type="submit"
-              className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
+              className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 hover:bg-gray-500 rounded-md hover:bg-blue-200"
               >
               Añadir
             </button>

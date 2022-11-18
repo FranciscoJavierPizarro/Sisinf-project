@@ -1,10 +1,10 @@
 import Layout from "@/components/Layout"
-import { signIn } from 'next-auth/react';
+import { getProviders, signIn } from 'next-auth/react';
 
-export default function Login() {
+export default function Login({ providers }) {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex flex-col justify-center">
 
         <form
           method="post"
@@ -54,10 +54,24 @@ export default function Login() {
             Loguear
           </button>
         </form>
+        {Object.values(providers).map((provider) => (
+        <div key={provider.name}>
+          <button onClick={() => signIn(provider.id)}>
+            Sign in with {provider.name}
+          </button>
+        </div>
+      ))}
       </div>
     </>
   );
 }
+
+export async function getServerSideProps() {
+  const providers = await getProviders()
+  return {
+    props: { providers },
+  }
+}getProviders, 
 
 Login.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>

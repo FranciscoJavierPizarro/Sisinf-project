@@ -1,5 +1,5 @@
 import { useSession, signOut } from "next-auth/react"
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut,FiHome,FiMap,FiUsers,FiBookmark } from "react-icons/fi";
 import SidebarButton from "./SidebarButton";
 export default function Sidebar() {
     const { data: session } = useSession()
@@ -8,32 +8,22 @@ export default function Sidebar() {
         {
             text: "Dashboard",
             url:"http://localhost:3000/",
-            logoName:<FiLogOut/>
-        },
-        {
-            text: "Ciudades guardadas",
-            url:"http://localhost:3000/",
-            logoName:<FiLogOut/>
+            logoName:<FiHome/>
         },
         {
             text: "Lugares guardadas",
-            url:"http://localhost:3000/",
-            logoName:<FiLogOut/>
-        },
-        {
-            text: "Estadísticas",
-            url:"http://localhost:3000/",
-            logoName:<FiLogOut/>
+            url:"http://localhost:3000/sitiosGuardados",
+            logoName:<FiBookmark/>
         },
         {
             text: "Descubre",
-            url:"http://localhost:3000/",
-            logoName:<FiLogOut/>
+            url:"https://www.google.es/maps/place/Espa%C3%B1a/@39.8754131,-12.7190775,5z/data=!3m1!4b1!4m5!3m4!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!8m2!3d40.463667!4d-3.74922?hl=es",
+            logoName:<FiMap/>
         },
         {
             text: "Colaboradores",
-            url:"http://localhost:3000/",
-            logoName:<FiLogOut/>
+            url:"http://localhost:3000/Colaboradores",
+            logoName:<FiUsers/>
         },
     ]
     

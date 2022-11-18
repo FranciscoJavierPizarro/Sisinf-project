@@ -17,7 +17,7 @@ export default function sitio({title,descp,likes,urlMaps,urlImg}) {
         </div>
         <button
               type="submit"
-              className=" mx-auto capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
+              className=" mx-auto capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 hover:bg-gray-500 rounded-md hover:bg-blue-200"
               >
               Añadir
         </button>
