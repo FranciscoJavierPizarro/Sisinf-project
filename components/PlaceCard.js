@@ -1,13 +1,15 @@
 import Link from "next/link"
 import { FiTrash2,FiStar,FiHeart,FiMapPin } from "react-icons/fi";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession } from "next-auth/react"
 
 export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlPhotos}) {
-    const { data: session } = useSession()
     const [likeado, setLikeado] = useState(false);
     const [saved, setSaved] = useState(false);
     const [nlikes, setLikes] = useState(likes);
+    let { data: session } = useSession()
+    session = session?.session
+
     const handleDelete= async (e,place,city) => {
         e.preventDefault()
         await fetch(`http://localhost:3000/api/places/` + place, {
@@ -17,17 +19,18 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlP
         })
         location.href = "http://localhost:3000/" + city
     }
-    const isLiked = async (idPlace, session) => {
-        const liked = await fetch(`http://localhost:3000/api/likes/` +idPlace+"/"+session.user.email,).then(res => res.json())
+    
+    const isLiked = async () => {
+        const liked = await fetch(`http://localhost:3000/api/likes/` +idPlace+"/"+session?.user?.email,).then(res => res.json())
         return (liked.length != 0)
     }
 
-    const isSaved = async (idPlace, session) => {
-        const saved = await fetch(`http://localhost:3000/api/savedPlaces/` +idPlace+"/"+session.user.email,).then(res => res.json())
+    const isSaved = async (idPlace) => {
+        const saved = await fetch(`http://localhost:3000/api/savedPlaces/` +idPlace+"/"+session?.user?.email,).then(res => res.json())
         return (saved.length != 0)
     }
 
-    const handleLike = async(e,idPlace,session,likeso) => {
+    const handleLike = async(e,idPlace,likeso) => {
         e.preventDefault()
         const alreadyLiked = await isLiked(idPlace,session)
         if(alreadyLiked) {
@@ -39,7 +42,7 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlP
             await fetch(`http://localhost:3000/api/likes/`, {
               method: "delete",
               headers: {"Content-Type" : "application/json"},
-              body: JSON.stringify({placeId:idPlace,userId:session.user.email})
+              body: JSON.stringify({placeId:idPlace,userId:session?.user?.email})
             })
         }
         else {
@@ -51,26 +54,26 @@ export default function PlaceCard({title,likes,descp,idPlace,idCity,urlMaps,urlP
             await fetch(`http://localhost:3000/api/likes/`, {
               method: "post",
               headers: {"Content-Type" : "application/json"},
-              body: JSON.stringify({placeId:idPlace,userId:session.user.email})
+              body: JSON.stringify({placeId:idPlace,userId:session?.user?.email})
             })
         }
     }
 
-    const handleSave = async(e,idPlace,session) => {
+    const handleSave = async(e,idPlace) => {
         e.preventDefault()
         const alreadySaved = await isSaved(idPlace,session)
         if(alreadySaved) {
             await fetch(`http://localhost:3000/api/savedPlaces/`, {
               method: "delete",
               headers: {"Content-Type" : "application/json"},
-              body: JSON.stringify({placeId:idPlace,userId:session.user.email})
+              body: JSON.stringify({placeId:idPlace,userId:session?.user?.email})
             })
         }
         else {
             await fetch(`http://localhost:3000/api/savedPlaces/`, {
               method: "post",
               headers: {"Content-Type" : "application/json"},
-              body: JSON.stringify({placeId:idPlace,userId:session.user.email})
+              body: JSON.stringify({placeId:idPlace,userId:session?.user?.email})
             })
         }
     }

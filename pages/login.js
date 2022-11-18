@@ -1,7 +1,8 @@
 import Layout from "@/components/Layout"
+import Github from "next-auth/providers/github";
 import { getProviders, signIn } from 'next-auth/react';
 
-export default function Login({ providers }) {
+export default function Login() {
   return (
     <>
       <div className="flex flex-col justify-center">
@@ -11,7 +12,7 @@ export default function Login({ providers }) {
           onSubmit={(e) => signIn("Credentials", {
             name: e.target.name.value,
             password: e.target.password.value
-          })}
+          }, { callbackUrl: '/' })}
           className="mt-4"
         >
           <div className="grid justify-items-center gap-x-2 mt-1 mb-10">
@@ -54,24 +55,16 @@ export default function Login({ providers }) {
             Loguear
           </button>
         </form>
-        {Object.values(providers).map((provider) => (
-        <div key={provider.name}>
-          <button onClick={() => signIn(provider.id)}>
-            Sign in with {provider.name}
+        <div>
+          <button onClick={() => signIn("github", { callbackUrl: '/' })}>
+            Sign in with github
           </button>
         </div>
-      ))}
       </div>
     </>
   );
 }
 
-export async function getServerSideProps() {
-  const providers = await getProviders()
-  return {
-    props: { providers },
-  }
-}getProviders, 
 
 Login.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>

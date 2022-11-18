@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import CityCard from '@/components/CityCard';
-import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
+import { useSession, getSession } from "next-auth/react"
 
 export default function SitiosGuardados({cities}) {
   const { data: session } = useSession()
@@ -28,12 +28,12 @@ export default function SitiosGuardados({cities}) {
   );
 }
 
-export async function getServerSideProps() {
-    const cities = await fetch("http://localhost:3000/api/cities").then(res => res.json())
-    return {
-      props: {cities}, // will be passed to the page component as props
-    }
+export async function getServerSideProps(req, res) {
+  const cities = await fetch("http://localhost:3000/api/cities").then(res => res.json())
+  return {
+    props: {cities}, // will be passed to the page component as props
   }
+}
 
 SitiosGuardados.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
