@@ -3,12 +3,11 @@ import CityCard from '@/components/CityCard';
 import PlaceCard from '@/components/PlaceCard';
 import Sidebar from '@/components/Sidebar';
 import { useSession, getSession } from "next-auth/react"
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 export default function SitiosGuardados() {
   let { data: session } = useSession()
   session = session?.session
-
-  let places = useRef([])
+  const [places, setPlaces] = useState([]);
   let loadedAtributtes = useRef(false)
   useEffect(() => {
     async function getData() {
@@ -20,13 +19,14 @@ export default function SitiosGuardados() {
           aux.push(place)
         }
       })
-      places.current = aux
+      setPlaces(aux)
     }
 
     if (!loadedAtributtes.current && session != undefined) {
       getData();
       loadedAtributtes.current = true
     }
+    
   });
 
   return (
@@ -35,7 +35,9 @@ export default function SitiosGuardados() {
       <div className='w-full flex justify-center'>
         <Sidebar />
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
-          {places.current.map(u => <PlaceCard key={u._id} title={u.name}
+          {//console.log(places)
+          }
+          {places.map(u => <PlaceCard key={u._id + u.name} title={u.name}
           likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl} descp={u.descp} />)}
         </h1>
       </div>

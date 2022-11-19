@@ -7,7 +7,7 @@ export default function CityCard({title,descp,likes,urlMaps,urlImg,urlCity,Valid
     const { data: session } = useSession()
     return (//meterle  la validacion mirar para ello el placecard
         <>
-        <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600">
+        <div className="flex text-black mx-auto mt-8 bg-gray-200 hover:bg-gray-300 w-2/3 h-40 rounded-2xl border-2 border-gray-600">
            <div className="w-1/6 h-24 mt-8 ml-8 rounded-2xl">
                 <img src={urlImg} className="mx-auto w-24 h-24"/>
            </div>

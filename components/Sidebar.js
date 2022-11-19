@@ -7,12 +7,12 @@ export default function Sidebar() {
     const buttons = [
         {
             text: "Dashboard",
-            url:"http://localhost:3000/",
+            url:"/",
             logoName:<FiHome/>
         },
         {
             text: "Lugares guardadas",
-            url:"http://localhost:3000/sitiosGuardados",
+            url:"/sitiosGuardados",
             logoName:<FiBookmark/>
         },
         {
@@ -22,7 +22,7 @@ export default function Sidebar() {
         },
         {
             text: "Colaboradores",
-            url:"http://localhost:3000/Colaboradores",
+            url:"/Colaboradores",
             logoName:<FiUsers/>
         },
     ]
@@ -38,8 +38,8 @@ export default function Sidebar() {
     return (
         <>
             <aside className="w-64 h-full absolute top-0 left-0 bg-sidebarBackground" aria-label="Sidebar">
-            <div className="overflow-y-auto py-4 px-3 rounded">
-                <ul className="space-y-2">
+            <div className="overflow-y-auto rounded">
+                <ul className="">
                     {list}
                     
                 </ul>
