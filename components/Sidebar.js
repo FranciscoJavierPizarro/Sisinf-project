@@ -38,6 +38,9 @@ export default function Sidebar() {
     return (
         <>
             <aside className="w-64 h-full absolute top-0 left-0 bg-sidebarBackground" aria-label="Sidebar">
+            <div className="w-1/8 h-24 mb-6 mt-8 ml-1/6 rounded-2xl">
+                <img src={"https://cdn-icons-png.flaticon.com/512/5667/5667206.png"} className="ml-16 w-34 h-24 object-cover self-auto"/>
+            </div>
             <div className="overflow-y-auto rounded">
                 <ul className="">
                     {list}
