@@ -3,7 +3,8 @@ import { useSession } from "next-auth/react"
 
 export default function AddPlace(id) {
 
-    const { data: session } = useSession()
+    let { data: session } = useSession()
+    session = session?.session
     const handleSubmit = async (e,id,session) => {
       id = id.id
       e.preventDefault()
@@ -11,7 +12,7 @@ export default function AddPlace(id) {
       const place = {
         name: name.value,
         descp: descp.value,
-        publisherId: session.user.email,
+        publisherId: session?.user?.email,
         mapsUrl:maps.value,
         photoUrl:photo.value,
         // publishingDate: new Date().toLocaleDateString('es-ES', {
@@ -28,7 +29,7 @@ export default function AddPlace(id) {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(place)
       })
-      location.href = "http://localhost:3000/" + id
+      location.href = "http://localhost:3000/city/" + id
     }
   
     return (

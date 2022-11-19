@@ -3,15 +3,16 @@ import { useSession } from "next-auth/react"
 
 export default function AddCity() {
     
-  const { data: session } = useSession()
-  const handleSubmit = async (e,session) => {
+  let { data: session } = useSession()
+  session = session?.session
+  const handleSubmit = async (e) => {
       e.preventDefault()
       const { name, descp, maps, photo } = e.target
       console.log(descp.value)
       const city = {
         name: name.value,
         descp: descp.value,
-        publisherId: session.user.email,
+        publisherId: session?.user?.email,
         mapsUrl:maps.value,
         photoUrl:photo.value,
         Validacion:false,
