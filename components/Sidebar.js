@@ -37,9 +37,9 @@ export default function Sidebar() {
     ))
     return (
         <>
-            <aside class="w-64 h-full absolute top-0 left-0 bg-sidebarBackground" aria-label="Sidebar">
-            <div class="overflow-y-auto py-4 px-3 rounded">
-                <ul class="space-y-2">
+            <aside className="w-64 h-full absolute top-0 left-0 bg-sidebarBackground" aria-label="Sidebar">
+            <div className="overflow-y-auto py-4 px-3 rounded">
+                <ul className="space-y-2">
                     {list}
                     
                 </ul>
