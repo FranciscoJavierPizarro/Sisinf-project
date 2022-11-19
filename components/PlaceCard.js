@@ -7,10 +7,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
     let { data: session } = useSession()
     session = session?.session
 
-    // const isSaved = async () => {
-    //     const saved = await fetch(`http://localhost:3000/api/savedPlaces/` +idPlace+"/"+session?.user?.email,).then(res => res.json())
-    //     return (saved.length != 0)
-    // }
+    
 
     const [likeado, setLikeado] = useState(false);
     const [saved, setSaved] = useState(false);
@@ -22,8 +19,14 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
             setLikeado(!(liked.length === 0))
 
         }
-        if (!likeado && !loadedAtributtes.current && session != undefined) {
+        async function isSaved() {
+            const saved = await fetch(`http://localhost:3000/api/savedPlaces/` +idPlace+"/"+session?.user?.email,).then(res => res.json())
+            setSaved(!(saved.length === 0))
+        }
+
+        if (!loadedAtributtes.current && session != undefined) {
             isLiked();
+            isSaved()
             loadedAtributtes.current = true
         }
     });
@@ -72,8 +75,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
 
     const handleSave = async (e) => {
         e.preventDefault()
-        const alreadySaved = await isSaved(idPlace, session)
-        if (alreadySaved) {
+        if (saved) {
             await fetch(`http://localhost:3000/api/savedPlaces/`, {
                 method: "delete",
                 headers: { "Content-Type": "application/json" },
@@ -87,6 +89,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                 body: JSON.stringify({ placeId: idPlace, userId: session?.user?.email })
             })
         }
+        setSaved(!saved)
     }
 
     function corazon(likeado) {
@@ -124,7 +127,6 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                                 <FiTrash2 />
                             </button>
                             <button onClick={(e) => {
-                                setSaved(!saved)
                                 handleSave(e, idPlace, session)
                             }}>
                                 {guardado(saved)}

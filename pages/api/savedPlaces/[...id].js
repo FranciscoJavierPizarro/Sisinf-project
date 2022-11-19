@@ -1,6 +1,5 @@
 import dbConnect from '@/models/dbConnect';
 import SavedPlace from '@/models/SavedPlace';
-import { cleanSchema } from '@/lib/formater';
 
 export default async function handler(req, res) {
   const allowedMethods = ["GET", "POST", "DELETE"]
@@ -18,10 +17,12 @@ export default async function handler(req, res) {
     const userId = id[1]
     if(userId === "") {
       const savedplaces = await SavedPlace.find({"userId":placeId})
+      console.log(savedplaces)
+      res.status(200).json(savedplaces)
     }
     else {
       const savedplaces = await SavedPlace.find({"placeId":placeId, "userId":userId})
+      res.status(200).json(savedplaces)
     }
-    res.status(200).json(savedplaces.map(item => cleanSchema(item)))
   }
 }
