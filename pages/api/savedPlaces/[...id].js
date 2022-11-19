@@ -15,9 +15,8 @@ export default async function handler(req, res) {
     const {id} = req.query
     const placeId = id[0]
     const userId = id[1]
-    if(userId === "") {
+    if(userId === undefined) {
       const savedplaces = await SavedPlace.find({"userId":placeId})
-      console.log(savedplaces)
       res.status(200).json(savedplaces)
     }
     else {

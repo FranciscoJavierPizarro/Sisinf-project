@@ -1,38 +1,47 @@
 import Layout from '../components/Layout'
 import CityCard from '@/components/CityCard';
+import PlaceCard from '@/components/PlaceCard';
 import Sidebar from '@/components/Sidebar';
 import { useSession, getSession } from "next-auth/react"
+import React, { useEffect, useRef } from 'react';
+export default function SitiosGuardados() {
+  let { data: session } = useSession()
+  session = session?.session
 
-export default function SitiosGuardados({cities}) {
-  const { data: session } = useSession()
-  const getData = async (session) => {
-    const saved = await fetch(`http://localhost:3000/api/savedPlaces/`+session.user.email,).then(res => res.json())
-    console.log(saved)
-    console.log(hello)
-    return saved
-}
-  const places = getData(session)
+  let places = useRef([])
+  let loadedAtributtes = useRef(false)
+  useEffect(() => {
+    async function getData() {
+      const saved = await fetch(`http://localhost:3000/api/savedPlaces/` + session.user.email,).then(res => res.json())
+      let aux = []
+      await saved.map(async u => {
+        if(u.userId === session?.user?.email) {
+          const place = await fetch(`http://localhost:3000/api/places/` + u.placeId,).then(res => res.json())
+          aux.push(place)
+        }
+      })
+      places.current = aux
+    }
+
+    if (!loadedAtributtes.current && session != undefined) {
+      getData();
+      loadedAtributtes.current = true
+    }
+  });
+
   return (
     <>
-            
+
       <div className='w-full flex justify-center'>
-        <Sidebar/>
+        <Sidebar />
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
-          {/* {cities.map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp ={u.descp} urlCity={"http://localhost:3000/"+u.id} likes={0} Valido={true}/>)}
-          {places.map(u => <div key={u.id}>{u.placeId}</div>)} */}
-          {console.log(cities)} {console.log(places)}
+          {places.current.map(u => <PlaceCard key={u._id} title={u.name}
+          likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl} descp={u.descp} />)}
         </h1>
       </div>
-      
+
     </>
   );
-}
-
-export async function getServerSideProps(req, res) {
-  const cities = await fetch("http://localhost:3000/api/cities").then(res => res.json())
-  return {
-    props: {cities}, // will be passed to the page component as props
-  }
 }
 
 SitiosGuardados.getLayout = function getLayout(page) {

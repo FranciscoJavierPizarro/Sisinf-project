@@ -7,8 +7,6 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
     let { data: session } = useSession()
     session = session?.session
 
-    
-
     const [likeado, setLikeado] = useState(false);
     const [saved, setSaved] = useState(false);
     const [nlikes, setLikes] = useState(likes);
@@ -31,6 +29,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
         }
     });
 
+
     const handleDelete = async (e, place, city) => {
         e.preventDefault()
         await fetch(`http://localhost:3000/api/places/` + place, {
@@ -41,12 +40,9 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
         location.href = "http://localhost:3000/" + city
     }
 
-
-
     const handleLike = async (e) => {
         e.preventDefault()
         if (likeado) {
-            console.log("Like borrado")
             likes = likes - 1
             await fetch(`http://localhost:3000/api/likes/`, {
                 method: "delete",
@@ -56,7 +52,6 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
             setLikes(nlikes - 1)
         }
         else {
-            console.log("Like añadido")
             likes = likes + 1
             await fetch(`http://localhost:3000/api/likes/`, {
                 method: "post",
@@ -92,6 +87,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
         setSaved(!saved)
     }
 
+
     function corazon(likeado) {
         if (likeado) {
             return <>
@@ -111,7 +107,6 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
         return <>
             <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-transparent"} /></>;
     }
-
 
 
     return (
