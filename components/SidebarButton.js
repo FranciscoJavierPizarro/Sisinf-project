@@ -2,7 +2,6 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 export default function SidebarButton({ text,url,logo }) {
     const router = useRouter()
-    console.log(url, router.pathname, router.pathname === url )
     return (
       <>
         <li className={router.pathname === url ? "bg-activesidebar" : "bg-sidebarBackground"}>  
