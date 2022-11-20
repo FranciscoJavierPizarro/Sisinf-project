@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Meta />
-      <div className="h-screen flex bg-background">
+      <div className="h-screen flex bg-gradient-to-t from-cyan-400 to-blue-300">
         <div className="flex-auto overflow-y-auto">
           <main className="h-screen">
             {!session && 

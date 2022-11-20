@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         'background': '#ffc971',
         'sidebarBackground': '#FFB775',
-        'activesidebar' : '#e09045'
+        'activesidebar' : '#81B3FF'
       },
     },
   },
