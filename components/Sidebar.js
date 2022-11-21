@@ -25,6 +25,11 @@ export default function Sidebar() {
             url:"/Colaboradores",
             logoName:<FiUsers/>
         },
+        {
+            text: "Administrar",
+            url:"/admin",
+            logoName:<FiHome/>,
+        }
     ]
     
     const list = buttons.map((item, idx) => (
