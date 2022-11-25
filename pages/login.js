@@ -20,31 +20,33 @@ export default function Login() {
               <span className="text-2xl self-auto text-black">Añadir una ciudad/pueblo</span>
             </label>
           </div>
-          <div className="flex gap-x-2 mt-1">
-            <label type="name" className="block w-full">
-              <span className="text-sm self-auto text-black">username:</span>
-              <input
-                type="username"
-                id="username"
-                name="username"
-                autoComplete="username"
-                className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
-                required
-              />
-            </label>
-          </div>
-          <div className="flex gap-x-2 mt-1">
-            <label type="password" className="block w-full">
-              <span className="text-sm self-auto text-black">password</span>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                autoComplete="password"
-                className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
-                required
-              />
-            </label>
+          <div  className=" mb-30  ml-70 text-black mx-auto my-40 mt-20 bg-white-500 w-2/3 h-full rounded-2xl border-2 border-white-600">
+            <div className="flex gap-x-2 mt-1">
+              <label type="name" className="block w-full">
+                <span className="text-sm self-auto text-black">username:</span>
+                <input
+                  type="username"
+                  id="username"
+                  name="username"
+                  autoComplete="username"
+                  className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+                  required
+                />
+              </label>
+            </div>
+            <div className="flex gap-x-2 mt-1">
+              <label type="password" className="block w-full">
+                <span className="text-sm self-auto text-black">password</span>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  autoComplete="password"
+                  className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+                  required
+                />
+              </label>
+            </div>
           </div>
 
 

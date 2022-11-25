@@ -14,9 +14,9 @@ export default function Home({cities}) {
       <div className='w-full flex justify-center'>
         <Sidebar/>
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
-          {cities.map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp ={u.descp} urlCity={"http://localhost:3000/city/"+u.id} likes={0} Validacion={u.Validacion} idCity={u.id}/>)}
+          {cities.map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp ={u.descp} urlCity={"/city/"+u.id} likes={0} Validacion={u.Validacion} idCity={u.id}/>)}
             {session &&
-              <Link href="http://localhost:3000/addCity" className='w-full h-full'>
+              <Link href="/addCity" className='w-full h-full'>
                 <div className='capitalize w-40 mx-auto mt-8 text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
                   Añadir ciudad
                 </div>

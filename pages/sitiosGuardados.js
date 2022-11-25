@@ -19,6 +19,7 @@ export default function SitiosGuardados() {
 
         places = places
           .filter(p => p.userId === session?.user?.email)
+          
           .map(item => item.placeId)
           .map(async id => {
             const res = await fetch(`http://localhost:3000/api/places/${id}`)
@@ -26,7 +27,6 @@ export default function SitiosGuardados() {
             return res
           })
       
-          
         Promise.all(places).then(res => {
           let newPlaces = res.map(item => item)
           setPlaces(newPlaces)
@@ -45,7 +45,7 @@ export default function SitiosGuardados() {
         <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
           {console.log(places)
           }
-          {places.map(u => <PlaceCard key={u._id + u.name} title={u.name}
+          {places.filter(p => !(p === null)).map(u => <PlaceCard key={u._id + u.name} title={u.name}
           likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl} descp={u.descp} />)}
         </h1>
       </div>

@@ -17,7 +17,8 @@ export default async function handler(req, res) {
     const place = await Place.findById(id)
     //culpa del cleanSchema
     // const place2 = await Place.find({cityId:id})
-    res.status(200).json(cleanSchema(place))
+    // res.status(200).json(cleanSchema(place))
+    res.status(200).json(place)
   } else if (method === "DELETE") {
     const {id} = req.query
     await Place.deleteOne({_id: id})

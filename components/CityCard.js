@@ -22,7 +22,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
         })
-        location.href = "http://localhost:3000/admin"
+        location.href = "/admin"
     }
 
 

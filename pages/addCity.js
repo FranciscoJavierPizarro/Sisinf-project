@@ -29,7 +29,7 @@ export default function AddCity() {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(city)
       })
-      location.href = "http://localhost:3000"
+      location.href = "/"
     }
   
     return (
@@ -49,50 +49,56 @@ export default function AddCity() {
   
         </label>
       </div>
-      <div className="flex gap-x-2 mt-1">
-        <label type="name" className="block w-full">
-          <span className="text-sm self-auto text-black">Añadir nombre de ciudad:</span>
-          <input
-            type="name"
-            id="name"
-            name="name"
-            autoComplete="name"
-            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
-            required
-          />
-        </label>
-      </div>
-      <div className="flex gap-x-2 mt-1">
-        <label className="block w-full">
-          <span className="text-sm self-auto text-black">Añadir URl de Google Maps:</span>
-          <input
-            type="maps"
-            id="maps"
-            name="maps"
-            autoComplete="maps"
-            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
-            required
-          />
-        </label>
-      </div>
-      <div className="flex gap-x-2 mt-1">
-        <label className="block w-full">
-          <span className="text-sm self-auto text-black">Añadir URL foto:</span>
-          <input
-            type="photo"
-            id="photo"
-            name="photo"
-            autoComplete="photo"
-            className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
-            required
+
+      <div  className=" mb-70  ml-70 text-black mx-auto my-40 mt-20 bg-white-500 w-full h-150 rounded-2xl border-2 border-white-600">
+
+        <div class="relative z-0 mb-6 w-full group">
+        <label for="nombre" 
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] 
+        peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">nombre
+
+            <span className="text-sm self-auto text-black">Añadir nombre de ciudad:</span>
+            <input
+              type="name"
+              id="name"
+              name="name"
+              autoComplete="name"
+              className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+              required
             />
-        </label>
-      </div>
-      <div className="gap-x-2 mt-2">
-        <span className="text-sm text-black">Añadir descripción del sitio:</span>
-          <textarea id="descp" rows="4" class="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
-      </div>
-            
+          </label>
+        </div>
+        <div className="flex gap-x-2 mt-1">
+          <label className="block w-full">
+            <span className="text-sm self-auto text-black">Añadir URl de Google Maps:</span>
+            <input
+              type="url"
+              id="maps"
+              name="maps"
+              autoComplete="maps"
+              className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+              required
+            />
+          </label>
+        </div>
+        <div className="flex gap-x-2 mt-1">
+          <label className="block w-full">
+            <span className="text-sm self-auto text-black">Añadir URL foto:</span>
+            <input
+              type="url"
+              id="photo"
+              name="photo"
+              autoComplete="photo"
+              className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+              required
+              />
+          </label>
+        </div>
+        <div className="gap-x-2 mt-2">
+          <span className="text-sm text-black">Añadir descripción del sitio:</span>
+            <textarea id="descp" rows="4" class="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
+        </div>
+      </div>      
              
       <button
               type="submit"
