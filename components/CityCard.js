@@ -1,7 +1,7 @@
 import Link from "next/link"
-import { FiMapPin, FiThumbsUp, FiCheck, FiX } from "react-icons/fi";
+import { FiMapPin,FiX,FiCheck} from "react-icons/fi";
 import { useSession } from "next-auth/react";
-import React, { useState } from 'react';
+
 
 export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Validacion, idCity }) {
     const { data: session } = useSession()
