@@ -5,8 +5,8 @@ import { getProviders, signIn } from 'next-auth/react';
 export default function Login() {
   return (
     <>
-      <div className="flex flex-col justify-center">
-
+      
+      <div className="w-1/3 ml-50 mx-auto">
         <form
           method="post"
           onSubmit={(e) => signIn("Credentials", {
@@ -15,41 +15,79 @@ export default function Login() {
           }, { callbackUrl: '/' })}
           className="mt-4"
         >
-          <div className="grid justify-items-center gap-x-2 mt-1 mb-10">
+        <div className=" bg-white rounded-md px-6 py-10 w-full ml-50 mx-auto ">
+          <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Sign Up</h1>
+          <div className="space-y-4">
+        
+        
+          <div className="flex gap-x-2 mt-1">
             <label type="name" className="block w-full">
-              <span className="text-2xl self-auto text-black">Añadir una ciudad/pueblo</span>
-            </label>
-          </div>
-          <div  className=" mb-30  ml-70 text-black mx-auto my-40 mt-20 bg-white-500 w-2/3 h-full rounded-2xl border-2 border-white-600">
-            <div className="flex gap-x-2 mt-1">
-              <label type="name" className="block w-full">
-                <span className="text-sm self-auto text-black">username:</span>
+                <span className="px-1 text-sm text-gray-600">Nombre:</span>
                 <input
-                  type="username"
-                  id="username"
-                  name="username"
-                  autoComplete="username"
-                  className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+                  type="name"
+                  id="name"
+                  name="name"
+                  autoComplete="name"
+                  className="text-md block px-3 py-2 rounded-lg w-full
+                  bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
+                  focus:bg-white focus:border-gray-600 focus:outline-none"
+                              
                   required
                 />
               </label>
             </div>
             <div className="flex gap-x-2 mt-1">
-              <label type="password" className="block w-full">
-                <span className="text-sm self-auto text-black">password</span>
+              <label className="block w-full">
+                <span className="px-1 text-sm text-gray-600">Apellidos:</span>
+                <input
+                  type="name"
+                  id="maps"
+                  name="maps"
+                  autoComplete="maps"
+                  className="text-md block px-3 py-2 rounded-lg w-full
+                  bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
+                  focus:bg-white focus:border-gray-600 focus:outline-none"
+                  required
+                />
+              </label>
+            </div>
+            <div className="flex gap-x-2 mt-1">
+              <label className="block w-full">
+                <span className=" px-1 text-sm text-gray-600">Contraseña:</span>
                 <input
                   type="password"
-                  id="password"
-                  name="password"
-                  autoComplete="password"
-                  className="block w-full px-3 py-2 mt-1 text-black border rounded-md form-input focus:border-blue-600 bg-transparent"
+                  id="photo"
+                  name="photo"
+                  autoComplete="photo"
+                  className="text-md block px-3 py-2 rounded-lg w-full
+                  bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
+                  focus:bg-white focus:border-gray-600 focus:outline-none"
                   required
-                />
+                  />
               </label>
             </div>
+
+            <div className="flex gap-x-2 mt-1">
+              <label className="block w-full">
+                <span className="px-1 text-sm text-gray-600">Correo electrónico:</span>
+                <input
+                  type="name"
+                  id="photo"
+                  name="photo"
+                  autoComplete="photo"
+                  className="text-md block px-3 py-2 rounded-lg w-full
+                  bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
+                  focus:bg-white focus:border-gray-600 focus:outline-none"
+                  required
+                  />
+              </label>
+            </div>
+            
+            
+                
+          
+                </div>
           </div>
-
-
           <button
             type="submit"
             className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
@@ -62,7 +100,7 @@ export default function Login() {
             Sign in with github
           </button>
         </div>
-      </div>
+        </div>
     </>
   );
 }

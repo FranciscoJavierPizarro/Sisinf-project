@@ -10,11 +10,7 @@ export default function Sidebar() {
             url:"/",
             logoName:<FiHome/>
         },
-        {
-            text: "Lugares guardadas",
-            url:"/sitiosGuardados",
-            logoName:<FiBookmark/>
-        },
+        
         {
             text: "Descubre",
             url:"https://www.google.es/maps/place/Espa%C3%B1a/@39.8754131,-12.7190775,5z/data=!3m1!4b1!4m5!3m4!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!8m2!3d40.463667!4d-3.74922?hl=es",
@@ -25,14 +21,32 @@ export default function Sidebar() {
             url:"/Colaboradores",
             logoName:<FiUsers/>
         },
+        
+    ]
+    
+    const Loggedbuttons = [
+        {
+            text: "Lugares guardadas",
+            url:"/sitiosGuardados",
+            logoName:<FiBookmark/>
+        },
         {
             text: "Administrar",
             url:"/admin",
             logoName:<FiHome/>,
         }
     ]
-    
+
     const list = buttons.map((item, idx) => (
+        <SidebarButton
+        key={idx}
+        text = {item.text}
+        url = {item.url}
+        logo = {item.logoName}
+        />
+    ))
+
+    const Loggedlist = Loggedbuttons.map((item, idx) => (
         <SidebarButton
         key={idx}
         text = {item.text}
@@ -49,7 +63,7 @@ export default function Sidebar() {
             <div className="overflow-y-auto rounded">
                 <ul className="">
                     {list}
-                    
+                    {session && Loggedlist}
                 </ul>
             {session && 
             <button className='absolute bottom-0 ml-4 mb-4' onClick={() => signOut()}><FiLogOut className='h-11 w-11'/></button>

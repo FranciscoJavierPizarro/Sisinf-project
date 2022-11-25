@@ -4,7 +4,7 @@ import { FiThumbsUp } from "react-icons/fi";
 import Sidebar from '@/components/Sidebar';
 import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
-
+import CommentCard from "@/components/CommentCard";
 export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, comms }) {
     
     let { data: session } = useSession()
@@ -50,38 +50,39 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
                   <h1 className="text-black ml-8 mt-4">
                       {descp}
                   </h1>
-                  {//ver comentarios
-                  }
-                  {comms.map(u => {
-                      return <p key={u}>{u.content}</p>
-                })}
-              </div>
-              <div className="text-black text-2xl bg-indigo-50 h-full w-1/4">
-                
-              </div>
-            </div>
-              <div className="flex justify-center">
 
+              </div>
+              <div className="bg-indigo-50 h-full w-1/4">
+                <div className="text-black text-xl ml-4 mr-4 mt-4 h-2/3 justify-center border-2 overflow-y-scroll">
+                  {comms.map(u => {
+                        return <CommentCard key={u.id} autor={u.userName} fecha={u.publishingDate} contenido={u.content}/>
+                  })}
+                </div>
+                  <div className="flex justify-center">
                   <form
                       method="post"
                       onSubmit={(e) => {
                           handleSubmit(e)
                       }}
                       className="mt-4"
-                  >
-                      
-                      <div className="gap-x-2 mt-2">
-                          <span className="text-sm text-black">Añadir descripción del Sitio:</span>
-                          <textarea id="contentt" rows="4" className="block p-2.5 mb-5 bg-gray-300 w-full text-sm  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 border-gray-600 placeholder-white-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="Añadir descripción..."></textarea>
-                      </div>
+                  > 
+                    <div className="grid gap-x-2 mt-2 w-full justify-items-center">
+                      <span className="px-1 text-sm text-black">Añadir nuevo comentario:</span>
+                        <textarea id="contentt" rows="4" className="font-arial p-4 text-black bg-gray-200 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
+                    
                       <button
                           type="submit"
-                          className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
+                          className=" justify-self-center capitalize mt-4 w-2/3 tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
                       >
                           Añadir
                       </button>
+                    </div>
                   </form>
+                </div>
+
               </div>
+            </div>
+
           </div>
 
         </>
@@ -91,7 +92,7 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
 export async function getServerSideProps(req) {
     const { id } = req.params
     const { name, descp, mapsUrl, photoUrl, publisherId } = await fetch("http://localhost:3000/api/places/" + id).then(res => res.json())
-    const comms = await fetch("http://localhost:3000/api/comments/").then(res => res.json())
+    const comms = await fetch("http://localhost:3000/api/comments/" + id ).then(res => res.json())
     return {
         props: { id,name, descp, mapsUrl, photoUrl, publisherId, comms }// will be passed to the page component as props
     }

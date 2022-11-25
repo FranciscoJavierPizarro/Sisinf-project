@@ -112,7 +112,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
     return (
         <>
         <Link href={"/place/" + idPlace} className="hover:cursor-pointer">
-            <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600">
+            <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600 hover:cursor-pointer">
                 <div className="w-1/6 h-24 mt-6 ml-8 rounded-2xl">
                     <img src={urlPhotos} className="mx-auto w-28 h-28" />
                 </div>
