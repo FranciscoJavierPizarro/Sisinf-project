@@ -13,10 +13,8 @@ export default async function handler(req, res) {
   
   await dbConnect();
   if (method === "POST") {
-    const query = JSON.parse(req.body)
-    console.log(query)
-    const user = await User.find({"gmail":query.gmail})
-    console.log(user)
+    const query = req.body
+    const user = await User.findOne({"gmail": query.username})
     res.status(200).json(user)
   }
 }
