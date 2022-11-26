@@ -17,25 +17,26 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        gmail: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/user/login`, {
+        console.log("llega")
+        const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/log/login`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(credentials.username),
+            body: JSON.stringify(credentials.gmail),
         }).then((res) => res.json())
 
         let user = null
-        const { id, userName, email, salt, passwd } = res.user
+        const { id, name, gmail, salt, password } = res.user
         if (
-          CryptoJS.SHA512(salt + credentials.password).toString() === passwd
+          CryptoJS.SHA512(salt + credentials.password).toString() === password
         ) {
           user = {
             id: id,
-            name: userName,
-            email: email,
+            name: name,
+            gmail: gmail,
           }
         }
   

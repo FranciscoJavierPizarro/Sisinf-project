@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-  surname: {
+  salt: {
     type: String,
   },
   password: {
