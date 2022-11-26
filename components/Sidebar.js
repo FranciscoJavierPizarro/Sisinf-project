@@ -57,11 +57,11 @@ export default function Sidebar() {
     return (
         <>
             <aside className="w-64 h-full absolute top-0 left-0 bg-gradient-to-t from-cyan-500 to-blue-500" aria-label="Sidebar">
-            <div className="w-1/8 h-24 mb-6 mt-8 ml-1/6 rounded-2xl">
-                <img src={"/logoNombre.png"}className="ml-16 w-34 h-24 object-cover self-auto"/>
+            <div className="grid h-36 mb-2 mt-4 justify-items-center text-white">
+                <img src={"/logoNombre.png"} className="self-auto h-36"/>
 
             </div>
-            <div className="overflow-y-auto rounded">
+            <div className="overflow-y-auto ">
                 <ul className="">
                     {list}
                     {session && Loggedlist}

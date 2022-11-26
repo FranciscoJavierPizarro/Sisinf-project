@@ -34,24 +34,24 @@ export default function AddPlace(id) {
   
     return (
       <>
-      <div className="flex justify-center">
+      <div className="flex justify-center h-5/6">
 
       <form
       method="post"
       onSubmit={(e) => {
         handleSubmit(e,id,session)
       }}
-      className="mt-4"
+      className="mt-8"
     >
       
-      <div className=" bg-white rounded-md px-6 py-10 w-full ml-70 mx-auto">
-        <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Añadir sitio</h1>
-        <div className="space-y-4">
+      <div className="bg-white rounded-md px-6 py-8 w-full mx-auto h-full">
+        <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Añadir nombre de un sitio</h1>
+          <div className="space-y-4 h-full">
       
       
-        <div className="flex gap-x-2 mt-1">
+        <div >
           <label type="name" className="block w-full">
-              <span className="px-1 text-sm text-gray-600">Añadir nombre sitio:</span>
+              <span className="px-1 text-md text-gray-600">Añadir nombre del sitio:</span>
               <input
                 type="name"
                 id="name"
@@ -65,9 +65,9 @@ export default function AddPlace(id) {
               />
             </label>
           </div>
-          <div className="flex gap-x-2 mt-1">
+          <div >
             <label className="block w-full">
-              <span className="px-1 text-sm text-gray-600">Añadir URl de Google Maps:</span>
+              <span className="px-1 text-md text-gray-600">Añadir URL de Google Maps:</span>
               <input
                 type="url"
                 id="maps"
@@ -80,9 +80,9 @@ export default function AddPlace(id) {
               />
             </label>
           </div>
-          <div className="flex gap-x-2 mt-1">
+          <div >
             <label className="block w-full">
-              <span className="px-1 text-sm text-gray-600">Añadir URL foto:</span>
+              <span className="px-1 text-md text-gray-600">Añadir URL foto:</span>
               <input
                 type="url"
                 id="photo"
@@ -95,9 +95,9 @@ export default function AddPlace(id) {
                 />
             </label>
           </div>
-          <div className="gap-x-2 mt-2">
-            <span className="px-1 text-sm text-gray-600">Añadir descripción del sitio:</span>
-              <textarea id="descp" rows="4" className="w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
+          <div className="h-40">
+            <span className="ml-2 text-md text-gray-600">Añadir descripción del sitio:</span>
+              <textarea id="descp" maxlength="251" required className="h-5/6 mt-2  w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
           </div>
           
               
