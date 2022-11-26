@@ -34,8 +34,8 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
     return (
         <>
           <Sidebar/>
-          <div class=" bg-gradient-to-r from-sky-500 to-indigo-500 w-full h-screen w-screen overflow-y-scroll" >
-              <div className="flex h-full align-left font-semibold mx-auto mt-10 ml-20 justify-center">
+          <div class=" bg-gradient-to-r from-sky-500 to-indigo-500 w-full h-full" >
+              <div className="flex h-full align-left font-semibold mx-auto ml-20 justify-center">
               
                 <div className="text-black text-2xl bg-white h-full w-1/3">
                   <div className="flex w-full align-left font-semibold mt-8 ml-8">
@@ -58,21 +58,20 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
                         return <CommentCard key={u.id} autor={u.userName} fecha={u.publishingDate} contenido={u.content}/>
                   })}
                 </div>
-                  <div className="flex justify-center">
+                  <div>
                   <form
                       method="post"
                       onSubmit={(e) => {
                           handleSubmit(e)
                       }}
-                      className="mt-4"
+                      className="mt-2"
                   > 
-                    <div className="grid gap-x-2 mt-2 w-full justify-items-center">
-                      <span className="px-1 text-sm text-black">Añadir nuevo comentario:</span>
-                        <textarea id="contentt" rows="4" className="font-arial p-4 text-black bg-gray-200 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
+                    <div className="grid w-full justify-items-center">
+                      <span className="px-1 text-m mb-2 text-black">Añadir nuevo comentario:</span>
+                        <textarea id="contentt" rows="4" className="w-5/6 font-arial p-5 text-black bg-gray-200 outline-none rounded-md" placeholder="Nuevo comentario..."></textarea>
                     
-                      <button
-                          type="submit"
-                          className=" justify-self-center capitalize mt-4 w-2/3 tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
+                      <button type="submit"
+                          className="capitalize mt-3 w-1/2 tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
                       >
                           Añadir
                       </button>
