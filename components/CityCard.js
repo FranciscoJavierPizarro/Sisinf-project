@@ -29,16 +29,16 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
     return (//meterle  la validacion mirar para ello el placecard
         <>
         <Link href={urlCity}>
-            <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600 hover:cursor-pointer">
-                <div className="w-1/6 h-24 mt-8 ml-8 rounded-2xl">
+            <div className="flex text-black mx-auto mt-8 bg-gray-200 w-1/3 h-40 rounded-2xl border-2 border-gray-600 hover:cursor-pointer">
+                <div className="w-24 h-24 mt-8 ml-8 rounded-2xl">
                     <img src={urlImg} className="mx-auto w-24 h-24" />
                 </div>
-                <div className="ml-16  w-5/6 h-full">
+                <div className="ml-8 h-full">
                     <div className="flex w-full align-left font-semibold mt-8">
                         
                             {title}
                         <Link href={urlMaps} className="hover:cursor-pointer">
-                            <FiMapPin className="ml-8 text-red-400 hover:cursor-pointer" />
+                            <FiMapPin className="ml-4 text-red-400 hover:cursor-pointer" />
                         </Link>
 
                     </div>

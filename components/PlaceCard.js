@@ -3,8 +3,9 @@ import { FiTrash2, FiStar, FiHeart, FiMapPin } from "react-icons/fi";
 import React, { useState, useEffect, useRef } from 'react';
 import { useSession } from "next-auth/react"
 
-export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMaps, urlPhotos }) {
+export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMaps, urlPhotos, autor }) {
     let { data: session } = useSession()
+    const aux = session
     session = session?.session
 
     const [likeado, setLikeado] = useState(false);
@@ -107,21 +108,20 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
         return <>
             <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-transparent"} /></>;
     }
-
-
+    
     return (
-        <>
+        
         <Link href={"/place/" + idPlace} className="hover:cursor-pointer">
-            <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600 hover:cursor-pointer">
-                <div className="w-1/6 h-24 mt-6 ml-8 rounded-2xl">
+            <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/5 h-40 rounded-2xl border-2 border-gray-600 hover:cursor-pointer">
+                <div className="w-28 h-28 mt-6 ml-8 rounded-2xl">
                     <img src={urlPhotos} className="mx-auto w-28 h-28" />
                 </div>
-                <div className="ml-16  w-5/6 h-full align-right">
+                <div className="ml-8  w-5/6 h-full align-right">
                     <div className="flex mr-4 mt-4 justify-end text-right">
                         {session && <>
-                            <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e, idPlace, idCity) }}>
+                            {(session?.user?.email === autor || session?.user?.image === true) && <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e, idPlace, idCity) }}>
                                 <FiTrash2 />
-                            </button>
+                            </button>}
                             <button onClick={(e) => {
                                 handleSave(e, idPlace, session)
                             }}>
@@ -153,6 +153,6 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                 </div>
             </div>
         </Link>
-        </>
+        
     )
 }

@@ -12,7 +12,7 @@ export default function Register() {
         salt: salt,
         gmail:gmail.value,
         password:CryptoJS.SHA512(salt + password.value).toString(),
-        
+        admin:false,
       }
 
       await fetch(`/api/log/`, {

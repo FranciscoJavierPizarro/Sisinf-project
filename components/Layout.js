@@ -11,7 +11,7 @@ export default function Layout({ children }) {
           <main className="h-screen">
             {!session && 
               <>
-              <div className='flex justify-end'>
+              <div className='absolute up-0 right-0 mt-4 mr-4'>
                 <button onClick={() => signIn()} className='flex-col mr-4 mt-2 justify-center'>
                   <FiUser className='mx-auto h-11 w-11'/>
                   <p>Sign in</p>
@@ -19,8 +19,8 @@ export default function Layout({ children }) {
                 
               </div></>
             }
-            {/* {session && 
-              <button className='absolute bottom-0 left-0 ml-4 mb-4' onClick={() => signOut()}><FiLogOut className='h-11 w-11'/></button>
+            {/* {!session && 
+              <button className='absolute up-0 right-0 mt-4 mr-4' onClick={() => signOut()}><FiLogOut className='h-11 w-11'/></button>
             } */}
             
             {/* {session && 

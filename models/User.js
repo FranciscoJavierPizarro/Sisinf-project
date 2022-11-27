@@ -12,6 +12,9 @@ const UserSchema = new mongoose.Schema({
   },
   gmail: {
     type: String,
+  },
+  admin: {
+    type: Boolean,
   }
 });
 

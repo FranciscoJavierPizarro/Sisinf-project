@@ -28,14 +28,16 @@ export const authOptions = {
         }).then((res) => res.json())
 
         let user = null
-        const { name, salt, password, gmail } = res
+        const { name, salt, password, gmail, admin } = res
         if (
           CryptoJS.SHA512(salt + credentials.password).toString() === password
         ) {
+          
           user = {
             id: gmail,
             name: name,
             email: gmail,
+            image: admin,
           }
         }
   

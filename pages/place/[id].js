@@ -52,12 +52,14 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
 
               </div>
               <div className="bg-indigo-50 h-11/12 w-1/4 rounded-r-lg my-4">
-                <div className="text-black text-xl ml-4 mr-4 mt-4 h-3/5 justify-center border-3 overflow-y-scroll">
+                <div className={session ? "h-3/5" : "h-full pb-8"}>
+                <div className="text-black text-xl ml-4 mr-4 mt-4 h-full justify-center border-3 overflow-y-scroll">
                   {comms.map(u => {
                         return <CommentCard key={u.id} autor={u.userName} fecha={u.publishingDate} contenido={u.content}/>
                   })}
                 </div>
-                  <div>
+                </div>
+                {session && <div>
                   <form
                       method="post"
                       onSubmit={(e) => {
@@ -76,7 +78,7 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
                       </button>
                     </div>
                   </form>
-                </div>
+                </div>}
 
               </div>
             </div>
