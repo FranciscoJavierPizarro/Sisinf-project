@@ -14,7 +14,7 @@ export default function SitiosGuardados() {
     if (status !== 'authenticated') return
 
     const getPlaces = async () => {
-      let places = await fetch(`http://localhost:3000/api/savedPlaces/` + session.user.email)
+      let places = await fetch(`/api/savedPlaces/` + session.user.email)
         .then(res => res.json())
 
         places = places
@@ -22,7 +22,7 @@ export default function SitiosGuardados() {
           
           .map(item => item.placeId)
           .map(async id => {
-            const res = await fetch(`http://localhost:3000/api/places/${id}`)
+            const res = await fetch(`/api/places/${id}`)
               .then(res => res.json())
             return res
           })

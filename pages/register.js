@@ -15,7 +15,7 @@ export default function Register() {
         
       }
 
-      await fetch(`http://localhost:3000/api/log/`, {
+      await fetch(`/api/log/`, {
         method: "post",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(user)

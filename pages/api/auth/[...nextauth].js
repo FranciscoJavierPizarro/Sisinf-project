@@ -35,7 +35,7 @@ export const authOptions = {
           user = {
             id: gmail,
             name: name,
-            gmail: gmail,
+            email: gmail,
           }
         }
   

@@ -32,8 +32,8 @@ export default function Home({ city, cityPlaces }) {
 
 export async function getServerSideProps(req) {
   const { id } = req.params
-  const city = await fetch("http://localhost:3000/api/cities/" + id).then(res => res.json())
-  const cityPlaces = await fetch("http://localhost:3000/api/placesbycity/" + id).then(res => res.json())
+  const city = await fetch(process.env.NEXTAUTH_URL+"/api/cities/" + id).then(res => res.json())
+  const cityPlaces = await fetch(process.env.NEXTAUTH_URL+"/api/placesbycity/" + id).then(res => res.json())
   return {
     props: { city, cityPlaces }// will be passed to the page component as props
   }

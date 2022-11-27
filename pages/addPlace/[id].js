@@ -24,7 +24,7 @@ export default function AddPlace(id) {
         cityId: id,
         favs: 0
       }
-      await fetch(`http://localhost:3000/api/places/`, {
+      await fetch(`/api/places/`, {
         method: "post",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(place)

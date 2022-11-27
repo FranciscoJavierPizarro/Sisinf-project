@@ -23,7 +23,7 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
         placeId: id,
         content:contentt.value,
       }
-      await fetch(`http://localhost:3000/api/comments/`, {
+      await fetch(`/api/comments/`, {
         method: "post",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(comment)
@@ -89,8 +89,8 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
 
 export async function getServerSideProps(req) {
     const { id } = req.params
-    const { name, descp, mapsUrl, photoUrl, publisherId } = await fetch("http://localhost:3000/api/places/" + id).then(res => res.json())
-    const comms = await fetch("http://localhost:3000/api/comments/" + id ).then(res => res.json())
+    const { name, descp, mapsUrl, photoUrl, publisherId } = await fetch(process.env.NEXTAUTH_URL+"/api/places/" + id).then(res => res.json())
+    const comms = await fetch(process.env.NEXTAUTH_URL+"/api/comments/" + id ).then(res => res.json())
     return {
         props: { id,name, descp, mapsUrl, photoUrl, publisherId, comms }// will be passed to the page component as props
     }

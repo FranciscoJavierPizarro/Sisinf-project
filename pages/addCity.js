@@ -24,7 +24,7 @@ export default function AddCity() {
         publisherDate:'2022/10/13',
       }
 
-      await fetch(`http://localhost:3000/api/cities/`, {
+      await fetch(`/api/cities/`, {
         method: "post",
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(city)

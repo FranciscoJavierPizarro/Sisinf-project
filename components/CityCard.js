@@ -8,16 +8,16 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
 
     const handleValid = async (e) => {
         e.preventDefault()
-        await fetch(`http://localhost:3000/api/cities/` + idCity, {
+        await fetch(`/api/cities/` + idCity, {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Validacion: true })
         })
-        location.href = "http://localhost:3000/admin"
+        location.href = "/admin"
     }
     const handleDelete = async (e) => {
         e.preventDefault()
-        await fetch(`http://localhost:3000/api/cities/` + idCity, {
+        await fetch(`/api/cities/` + idCity, {
             method: "delete",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
