@@ -27,7 +27,7 @@ export default function Login() {
 
               <div className="flex gap-x-2 mt-1">
                 <label className="block w-full">
-                  <span className="px-1 text-sm text-gray-600">Apellidos:</span>
+                  <span className="px-1 text-sm text-gray-600">Dirección de correo electrónico:</span>
                   <input
                     type="username"
                     id="username"

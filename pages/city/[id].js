@@ -4,8 +4,10 @@ import PlaceCard from '@/components/PlaceCard';
 import { FiMapPin } from "react-icons/fi";
 import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
-export default function Home({ city, cityPlaces }) {
+export default function Home({ city, cityPlaces,weather }) {
   const { data: session } = useSession()
+  console.log(weather)
+  console.log(weather.main.temp)
   return (
     <>
       <div className='w-full flex justify-center'>
@@ -13,6 +15,7 @@ export default function Home({ city, cityPlaces }) {
         <div className="w-full h-full tracking-wide capitalize text-black text-2xl text-center justify-center">
           <FiMapPin className="" />
           <h1> Estás visitando {city.name}</h1>
+          {!(weather === undefined) && <><p>La temperatura es de {weather.main.temp} ºC</p></>}
           <br></br>
           <div className='flex-col content-center'>
             <div className='mx-auto flex flex-wrap gap-x-4 w-4/5'>
@@ -37,8 +40,10 @@ export async function getServerSideProps(req) {
   const { id } = req.params
   const city = await fetch(process.env.NEXTAUTH_URL + "/api/cities/" + id).then(res => res.json())
   const cityPlaces = await fetch(process.env.NEXTAUTH_URL + "/api/placesbycity/" + id).then(res => res.json())
+  //const weather = await fetch("https://api.weatherbit.io/v2.0/current?city="+city.name+"&country=ES&key=" + process.env.WEATHER_API2 + "&include=minutel").then(res => res.json()).data[0]
+  const weather = await fetch("https://api.openweathermap.org/data/2.5/weather?q="+city.name+",ES&appid=" + process.env.WEATHER_API + "&units=metric").then(res => res.json())
   return {
-    props: { city, cityPlaces }// will be passed to the page component as props
+    props: { city, cityPlaces,weather }// will be passed to the page component as props
   }
 }
 

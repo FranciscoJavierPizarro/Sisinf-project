@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FiMapPin,FiX,FiCheck} from "react-icons/fi";
+import { FiMapPin,FiX,FiCheck,FiTrash2} from "react-icons/fi";
 import { useSession } from "next-auth/react";
 
 
@@ -22,9 +22,17 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
         })
+        location.href = "/"
+    }
+    const handleDeleteAdmin = async (e) => {
+        e.preventDefault()
+        await fetch(`/api/cities/` + idCity, {
+            method: "delete",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify("")
+        })
         location.href = "/admin"
     }
-
 
     return (//meterle  la validacion mirar para ello el placecard
         <>
@@ -34,13 +42,20 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
                     <img src={urlImg} className="mx-auto w-24 h-24" />
                 </div>
                 <div className="ml-8 h-full">
+                    
                     <div className="flex w-full align-left font-semibold mt-8">
                         
                             {title}
                         <Link href={urlMaps} className="hover:cursor-pointer">
                             <FiMapPin className="ml-4 text-red-400 hover:cursor-pointer" />
                         </Link>
-
+                        {session?.session?.user?.image === true && <>
+                            <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e) }}>
+                                <FiTrash2 />
+                            </button>
+                        </>}
+                    
+                        
                     </div>
                     <div className="text-left text-base">
                         {descp}
@@ -56,7 +71,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
                                         <FiCheck className="text-green-500" />
                                     </button>
                                     <button className="bg-blue-200 hover:cursor-pointer" onClick={(e) => {
-                                        handleDelete(e, idCity)
+                                        handleDeleteAdmin(e)
                                     }}>
                                         <FiX className="text-red-500" />
                                     </button>
