@@ -16,5 +16,8 @@ export default async function handler(req, res) {
     const query = req.body
     const user = await User.findOne({"gmail": query.username})
     res.status(200).json(user)
+  } else if (req.method === 'GET') {
+    const users = await User.find({})
+    res.status(200).json(users.map(item => cleanSchema(item)))
   }
 }

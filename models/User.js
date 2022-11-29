@@ -15,6 +15,9 @@ const UserSchema = new mongoose.Schema({
   },
   admin: {
     type: Boolean,
+  },
+  spam: {
+    type: String,
   }
 });
 

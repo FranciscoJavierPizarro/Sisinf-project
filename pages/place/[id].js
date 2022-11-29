@@ -55,7 +55,7 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
                 <div className={session ? "h-3/5" : "h-full pb-8"}>
                 <div className="text-black text-xl ml-4 mr-4 mt-4 h-full justify-center border-3 overflow-y-scroll">
                   {comms.map(u => {
-                        return <CommentCard key={u.id} autor={u.userName} fecha={u.publishingDate} contenido={u.content}/>
+                        return <CommentCard key={u.id} autor={u.userName} fecha={u.publishingDate} contenido={u.content} idComment={u.id} idPlace={id}/>
                   })}
                 </div>
                 </div>

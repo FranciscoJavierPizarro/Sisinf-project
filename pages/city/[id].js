@@ -15,7 +15,7 @@ export default function Home({ city, cityPlaces }) {
           <h1> Estás visitando {city.name}</h1>
           <br></br>
           <div className='flex-col content-center'>
-            <div className='mx-auto flex flex-wrap gap-x-4 w-3/4'>
+            <div className='mx-auto flex flex-wrap gap-x-4 w-4/5'>
               {cityPlaces.map(u => <PlaceCard key={u._id} title={u.name}
                 likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl} descp={u.descp} autor={u.publisherId} />)}
             </div>

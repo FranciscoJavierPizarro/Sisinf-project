@@ -17,4 +17,9 @@ export default async function handler(req, res) {
     const comments = await Comment.find({"placeId":id})
     res.status(200).json(comments.map(item => cleanSchema(item)))
   }
+  else if (method === "DELETE") {
+    const {id} = req.query
+    await Comment.deleteOne({_id: id})
+    res.status(204).json()
+  }
 }

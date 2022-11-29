@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout"
 import Github from "next-auth/providers/github";
 import { signIn } from 'next-auth/react';
+import Link from "next/link";
 
 export default function Login() {
   return (
@@ -69,6 +70,11 @@ export default function Login() {
           <button onClick={() => signIn("github", { callbackUrl: '/' })}>
             Sign in with github
           </button>
+        </div>
+        <div>
+          <Link href="/register">
+            Registrarse
+          </Link>
         </div>
       </div>
     </>
