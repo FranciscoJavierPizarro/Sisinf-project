@@ -6,8 +6,6 @@ import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
 export default function Home({ city, cityPlaces,weather }) {
   const { data: session } = useSession()
-  console.log(weather)
-  console.log(weather.main.temp)
   return (
     <>
       <div className='w-full flex justify-center'>
