@@ -42,6 +42,7 @@ export async function getServerSideProps(req) {
   const cityPlaces = await fetch(process.env.NEXTAUTH_URL + "/api/placesbycity/" + id).then(res => res.json())
   //const weather = await fetch("https://api.weatherbit.io/v2.0/current?city="+city.name+"&country=ES&key=" + process.env.WEATHER_API2 + "&include=minutel").then(res => res.json()).data[0]
   const weather = await fetch("https://api.openweathermap.org/data/2.5/weather?q="+city.name+",ES&appid=" + process.env.WEATHER_API + "&units=metric").then(res => res.json())
+  //check apikey
   return {
     props: { city, cityPlaces,weather }// will be passed to the page component as props
   }
