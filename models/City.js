@@ -23,6 +23,5 @@ const CitySchema = new mongoose.Schema({
     type: Boolean,
   },
 });
-CitySchema.index({name: 'text', descp: 'text'});
 
 export default mongoose.models.City || mongoose.model('City', CitySchema);
