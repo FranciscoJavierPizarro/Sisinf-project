@@ -96,7 +96,7 @@ export default function AddCity() {
           </div>
           <div className="h-40">
             <span className="ml-2 text-md text-gray-600">Añadir descripción del sitio:</span>
-              <textarea id="descp" maxlength="251" required className="h-5/6 mt-2  w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
+              <textarea id="descp" maxlength="150" required className="h-5/6 mt-2  w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
           </div>
           
               

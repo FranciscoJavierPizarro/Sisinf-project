@@ -27,7 +27,7 @@ export default function Home({ cities }) {
               }}
               className="mt-4"
             >
-              <div className=" bg-white rounded-md px-6 py-10 w-full ml-70 mx-auto">
+              <div className=" bg-white rounded-md px-4 py-4 w-full ml-70 mx-auto">
                 <div className="space-y-4">
 
 
@@ -65,7 +65,7 @@ export default function Home({ cities }) {
           </div>
           {session &&
             <Link href="/addCity" className='w-full h-full'>
-              <div className='capitalize w-40 mx-auto mt-8 text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
+              <div className='capitalize w-40 mx-auto text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
                 Añadir ciudad
               </div>
             </Link>

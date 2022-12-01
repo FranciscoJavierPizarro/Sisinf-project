@@ -34,14 +34,14 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
         location.href = "/admin"
     }
 
-    return (//meterle  la validacion mirar para ello el placecard
+    return (
 
         <Link href={urlCity}>
             <div className="flex text-black mt-8 bg-gray-200 w-1/3 h-40 rounded-2xl border-2 border-gray-600 hover:cursor-pointer">
                 <div className="w-24 h-24 mt-8 ml-8 rounded-2xl">
                     <img src={urlImg} className="mx-auto w-24 h-24" />
                 </div>
-                <div className="ml-8 h-full">
+                <div className="w-2/3 ml-8 h-full">
 
                     <div className="flex w-full align-left font-semibold mt-8">
 
@@ -57,9 +57,9 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
 
 
                     </div>
-                    <div className="text-left text-base">
+                    <p className="text-justify text-base truncate">
                         {descp}
-                    </div>
+                    </p>
                     {session && <>
                         <div className="grid place-items-end mr-7">
                             {

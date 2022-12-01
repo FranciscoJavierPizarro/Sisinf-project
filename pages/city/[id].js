@@ -34,7 +34,7 @@ export default function Home({ city, cityPlaces,weather }) {
               }}
               className="mt-4"
             >
-              <div className=" bg-white rounded-md px-6 py-10 w-full ml-70 mx-auto">
+                            <div className=" bg-white rounded-md px-4 py-4 w-full ml-70 mx-auto">
                 <div className="space-y-4">
 
 

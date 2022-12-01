@@ -13,15 +13,17 @@ export default function Home({cities, users}) {
        
       <div className='w-full flex justify-center'>
         <Sidebar/>
-        {cities.length > 0 && <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
+        <div className="grid justify-items-center w-full">
+        {cities.length > 0 && <h1 className="grid w-5/6 justify-items-center text-white text-2xl text-center">
           Aprobar ciudades
           {cities.map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp ={u.descp} urlCity={"/city/"+u.id} 
           likes={0} Validacion={u.Validacion} idCity={u.id}/>)} 
         </h1>}
-        {users.length > 0 && <h1 className="w-2/3 h-full capitalize text-white text-2xl text-center">
+        {users.length > 0 && <h1 className="w-2/5 text-white text-2xl text-center">
           Administrar usuarios
           {users.map(u => <AdministrateUserCard key={u.id} name={u.name} gmail ={u.gmail} spam={u.spam} admin={u.admin} id={u.id}/>)} 
         </h1>}
+        </div>
       </div>
       
     </>
