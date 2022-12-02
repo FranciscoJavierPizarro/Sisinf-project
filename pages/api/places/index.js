@@ -13,8 +13,8 @@ export default async function handler(req, res) {
   
   await dbConnect();
   if (method === "GET") {
-    const places = await Place.find({})
-    res.status(200).json(places.map(item => cleanSchema(item)))
+    const places = await Place.find({}).sort({ favs: 'desc'})
+    res.status(200).json(places.map(item => (item)))
   } else if (method === "POST") {
     const data = req.body
     const place = await Place.create(data)

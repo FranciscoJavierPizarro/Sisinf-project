@@ -13,7 +13,7 @@ export default function Sidebar() {
         
         {
             text: "Descubre",
-            url:"https://www.google.es/maps/place/Espa%C3%B1a/@39.8754131,-12.7190775,5z/data=!3m1!4b1!4m5!3m4!1s0xc42e3783261bc8b:0xa6ec2c940768a3ec!8m2!3d40.463667!4d-3.74922?hl=es",
+            url:"/descubre",
             logoName:<FiMap/>
         },
         {
@@ -26,7 +26,7 @@ export default function Sidebar() {
     
     const Loggedbuttons = [
         {
-            text: "Lugares guardadas",
+            text: "Lugares guardados",
             url:"/sitiosGuardados",
             logoName:<FiBookmark/>
         },
@@ -71,7 +71,7 @@ export default function Sidebar() {
         <div className="w-64">
             <aside className="w-64 h-full absolute top-0 left-0 bg-gradient-to-t from-cyan-500 to-blue-500" aria-label="Sidebar">
             <div className="grid h-36 mb-2 mt-4 justify-items-center text-white">
-                <img src={"/logoNombre.png"} className="self-auto h-36"/>
+                <img src={"/logoNombre.png"} className=" justify-self-center h-36"/>
 
             </div>
             <div className="overflow-y-auto ">

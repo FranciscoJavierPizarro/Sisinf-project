@@ -57,7 +57,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
 
 
                     </div>
-                    <p className="text-justify text-base truncate">
+                    <p className="h-full text-justify text-base text-ellipsis">
                         {descp}
                     </p>
                     {session && <>

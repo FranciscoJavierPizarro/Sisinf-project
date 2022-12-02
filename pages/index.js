@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import Link from 'next/link';
 import CityCard from '@/components/CityCard';
 import { useSession } from "next-auth/react"
+import { FiSearch } from "react-icons/fi";
 import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react';
 export default function Home({ cities }) {
@@ -18,40 +19,41 @@ export default function Home({ cities }) {
       <div className='w-full flex'>
         <Sidebar />
         <div className='flex-col content-center flex-1'>
-          <div className="flex justify-center">
-
+          <div className="flex justify-center h-24 ">
             <form
               method="post"
               onSubmit={async (e) => {
                 await handleSearch(e)
               }}
-              className="mt-4"
+              className="mt-5 w-1/3 h-1/2"
             >
-              <div className=" bg-white rounded-md px-4 py-4 w-full ml-70 mx-auto">
-                <div className="space-y-4">
+              <div className="rounded-lg w-full mx-auto h-full">
+                <div className="h-full">
 
-
-                  <div className="flex gap-x-2 mt-1">
-                    <label type="name" className="block w-full">
-                      <span className="px-1 text-sm text-gray-600">Nombre:</span>
+                  <div className="flex h-full">
+                    <label type="name" className="block w-full h-full">
+                      <div className="flex h-full">
                       <input
                         type="name"
                         id="name"
                         name="name"
+                        placeholder="Busca una ciudad o pueblo"
                         autoComplete="name"
-                        className="text-md block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
-                focus:bg-white focus:border-gray-600 focus:outline-none"         
+                        className="px-2 h-full text-md block rounded-l-lg w-full
+                bg-white border-2 border-cyan-900 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
+                focus:bg-white focus:border-cyan-700 focus:outline-none"         
                       />
+                      </div>
                     </label>
-                  </div>
+                    
 
                   <button
                     type="submit"
-                    className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 hover:bg-gray-500 rounded-md hover:bg-blue-200"
-                  >
-                    Buscar
+                    className=" grid justify-items-center items-center text-2xl w-1/6 text-white bg-cyan-900 hover:bg-cyan-700 rounded-r-lg hover:bg-blue-200">
+                    <FiSearch/>
                   </button>
+                 
+                  </div>
                 </div>
               </div>
             </form>
@@ -61,7 +63,7 @@ export default function Home({ cities }) {
 
 
           <div className="w-full mx-auto h-full capitalize text-white text-2xl text-center flex flex-wrap gap-x-2 justify-around">
-            {cities.filter(u => u?.name.includes(filtro)).map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp={u.descp} urlCity={"/city/" + u.id} likes={0} Validacion={u.Validacion} idCity={u.id} />)}
+            {cities.filter(u => u?.name.toLowerCase().includes(filtro.toLowerCase())).map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp={u.descp} urlCity={"/city/" + u.id} likes={0} Validacion={u.Validacion} idCity={u.id} />)}
           </div>
           {session &&
             <Link href="/addCity" className='w-full h-full'>

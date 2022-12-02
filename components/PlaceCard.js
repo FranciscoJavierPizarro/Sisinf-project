@@ -140,14 +140,14 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                             </sub>
                         </>}
                     </div>
-                    <div className="flex w-full align-left font-semibold">
+                    <div className="capitalize flex w-full align-left font-semibold">
                         {title}
 
-                        <Link href={urlMaps} className="hover:cursor-pointer">
+                        {!(urlMaps === "") && <Link href={urlMaps} className="hover:cursor-pointer">
                             <FiMapPin className="ml-8 text-red-400 hover:cursor-pointer" />
-                        </Link>
+                        </Link>}
                     </div>
-                    <div className="text-black text-left">
+                    <div className=" capitalize text-black text-left text-base ">
                         {descp}
                     </div>
                 </div>

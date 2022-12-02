@@ -25,6 +25,9 @@ const PlaceSchema = new mongoose.Schema({
   favs: {
     type: Number,
   },
+  kindOfPlace: {
+    type: String,
+  }
 });
 
 export default mongoose.models.Place || mongoose.model('Place', PlaceSchema);

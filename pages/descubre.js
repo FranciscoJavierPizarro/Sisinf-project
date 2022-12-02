@@ -1,14 +1,13 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link';
 import PlaceCard from '@/components/PlaceCard';
-import { CiBeerMugFull,CiBank } from "react-icons/ci";
-
+import { FiMapPin } from "react-icons/fi";
 import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react';
-import { FiSearch,FiThermometer,FiCoffee,FiHome } from "react-icons/fi";
+import { FiStar, FiHeart,FiSearch } from "react-icons/fi";
 
-export default function Home({ city, cityPlaces, weather }) {
+export default function Home({ places }) {
   const { data: session } = useSession()
   const [filtro, setFiltro] = useState("");
   const [typeofplace, setType] = useState("");
@@ -21,33 +20,29 @@ export default function Home({ city, cityPlaces, weather }) {
   function monumento() {
     if (typeofplace == "monumento") {
       return <>
-        <FiHome className={"ml-1.5 h-9 w-9 text-black fill-stone-400"} />
+        <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-red-500"} />
       </>;
     }
     return <>
-      <FiHome className={"ml-1.5 h-9 w-9 text-black fill-transpartent"} /></>;
+      <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-transparent"} /></>;
   }
 
   function bar() {
     if (typeofplace == "bar") {
       return <>
-        <FiCoffee className={"ml-2 h-9 w-9 text-black fill-amber-700"} />
+        <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-yellow-400"} />
       </>;
     }
     return <>
-      <FiCoffee className={"ml-2 h-9 w-9 text-black fill-transparent"} /></>;
+      <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-transparent"} /></>;
   }
 
   return (
     <>
       <div className='w-full flex'>
         <Sidebar />
-        <div className='flex-col content-center flex-1 text-2xl'>
-          <div className="mt-4 flex justify-center"> Estás visitando {city.name}</div>
-          {!(weather === undefined) && !(weather.main === undefined) && <><div className="flex justify-center text-2xl"><FiThermometer/> La temperatura es de {weather.main.temp} ºC</div></>}
-          <br></br>
-
-          <div className="flex justify-center h-24 ">
+        <div className=' flex-col content-center flex-1 text-2xl'>
+            <div className="flex justify-center h-24 ">
             <form
               method="post"
               onSubmit={async (e) => {
@@ -112,17 +107,10 @@ export default function Home({ city, cityPlaces, weather }) {
           </div>
           <div className='flex-col content-center'>
             <div className='mx-auto flex flex-wrap gap-x-4 w-4/5'>
-              {cityPlaces.filter(u => u?.name.toLowerCase().includes(filtro.toLowerCase()) && (typeofplace === "" || typeofplace === u.kindOfPlace))
+              {places.filter(u => u?.name.toLowerCase().includes(filtro.toLowerCase()) && (typeofplace === "" || typeofplace === u.kindOfPlace))
               .map(u => <PlaceCard key={u._id} title={u.name}
                 likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl} descp={u.descp} autor={u.publisherId} />)}
             </div>
-            {session &&
-              <Link href={"/addPlace/" + city.id} className='test-white'>
-                <div className='mx-auto capitalize w-40 mx-auto mt-8 text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
-                  Añadir sitio
-                </div>
-              </Link>
-            }
           </div>
         </div>
       </div>
@@ -130,15 +118,11 @@ export default function Home({ city, cityPlaces, weather }) {
   );
 }
 
-export async function getServerSideProps(req) {
-  const { id } = req.params
-  const city = await fetch(process.env.NEXTAUTH_URL + "/api/cities/" + id).then(res => res.json())
-  const cityPlaces = await fetch(process.env.NEXTAUTH_URL + "/api/placesbycity/" + id).then(res => res.json())
-  //const weather = await fetch("https://api.weatherbit.io/v2.0/current?city="+city.name+"&country=ES&key=" + process.env.WEATHER_API2 + "&include=minutel").then(res => res.json()).data[0]
-  const weather = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city.name + ",ES&appid=" + process.env.WEATHER_API + "&units=metric").then(res => res.json())
-  //check apikey
+export async function getServerSideProps() {
+  const places = await fetch(process.env.NEXTAUTH_URL + "/api/places/").then(res => res.json())
+  
   return {
-    props: { city, cityPlaces, weather }// will be passed to the page component as props
+    props: { places }// will be passed to the page component as props
   }
 }
 

@@ -37,7 +37,7 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
               <div className="flex h-full align-left font-semibold mx-auto ml-20 justify-center">
               
                 <div className="text-black text-3xl bg-white h-11/12 w-1/3 rounded-l-lg my-4">
-                  <div className="flex w-full align-left font-semibold mt-8 ml-8">
+                  <div className="capitalize flex w-full align-left font-semibold mt-8 ml-8">
                       {name}
                       <Link href={mapsUrl} className="hover:cursor-pointer">
                           <FiMapPin className="ml-4 text-red-600 hover:cursor-pointer" />

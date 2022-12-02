@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout"
 import CryptoJS from "crypto-js"
 import crypto from "crypto"
+import Sidebar from "@/components/Sidebar"
 export default function Register() {
     
   const handleSubmit = async (e) => {
@@ -27,7 +28,7 @@ export default function Register() {
     return (
       <>
       <div className="flex justify-center">
-        
+      <Sidebar /> 
       <form
       method="post"
       onSubmit={(e) => {

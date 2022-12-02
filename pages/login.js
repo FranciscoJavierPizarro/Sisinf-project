@@ -2,12 +2,13 @@ import Layout from "@/components/Layout"
 import Github from "next-auth/providers/github";
 import { signIn } from 'next-auth/react';
 import Link from "next/link";
-
+import Sidebar from "@/components/Sidebar";
 export default function Login() {
   return (
     <>
-
-      <div className="w-1/3 ml-50 mx-auto">
+    <div className="w-full flex">
+      <Sidebar />
+      <div className="w-full grid justify-items-center mt-4 ">
         <form
           method="post"
           onSubmit={(e) => {
@@ -19,15 +20,16 @@ export default function Login() {
               callbackUrl: '/'
             } )
           }}
-          className="mt-4"
+          className="mt-4 w-1/4"
         >
-          <div className=" bg-white rounded-md px-6 py-10 w-full ml-50 mx-auto ">
+          <div>
+          <div className="bg-white rounded-md px-6 py-8 w-full ml-50 mx-auto ">
             <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Sign Up</h1>
             <div className="space-y-4">
 
               <div className="flex gap-x-2 mt-1">
                 <label className="block w-full">
-                  <span className="px-1 text-sm text-gray-600">Dirección de correo electrónico:</span>
+                  <span className="px-1 text-base text-gray-600">Dirección de correo electrónico:</span>
                   <input
                     type="username"
                     id="username"
@@ -42,7 +44,7 @@ export default function Login() {
               </div>
               <div className="flex gap-x-2 mt-1">
                 <label className="block w-full">
-                  <span className=" px-1 text-sm text-gray-600">Contraseña:</span>
+                  <span className=" px-1 text-base text-gray-600">Contraseña:</span>
                   <input
                     type="password"
                     id="password"
@@ -58,24 +60,33 @@ export default function Login() {
 
 
             </div>
+            </div>
+
+            <button
+              type="submit"
+            className ="flex mt-3 bg-red-500 hover:bg-yellow-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full">
+              Loguear
+            </button>
+        
+       
+          <div className="w-full flex mx-auto">
+            <button className ="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full">
+            <Link href="/register">
+              Registrarse
+            </Link>
+            </button>
           </div>
-          <button
-            type="submit"
-            className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 rounded-md hover:bg-blue-200"
-          >
-            Loguear
-          </button>
-        </form>
-        <div>
-          <button onClick={() => signIn("github", { callbackUrl: '/' })}>
-            Sign in with github
-          </button>
+          <div>
+            <button className="flex mt-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full" 
+            onClick={() => signIn("github", { callbackUrl: '/' })}>
+              Sign in with github
+            </button>
+            
+          </div>
         </div>
-        <div>
-          <Link href="/register">
-            Registrarse
-          </Link>
-        </div>
+
+      </form>
+      </div>
       </div>
     </>
   );

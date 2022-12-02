@@ -6,18 +6,73 @@ export default function Colaboradores({ users, stats }) {
     return (
         <>
             <div className='w-full'>
-                <div class="grid justify-items-center">
+                <div class="grid mt-3 justify-items-center text-2xl ">
                     <Sidebar />
                     Estadisiticas:
-                    <div>
-                        <p>{stats.nCities}</p>
-                        <p>{stats.nComments}</p>
-                        <p>{stats.nLikes}</p>
-                        <p>{stats.nPlaces}</p>
-                        <p>{stats.nSavedPlaces}</p>
-                        <p>{stats.nUsers}</p>
+
+                    <div class="mt-3 w-1/3 m-auto bg-gradient-to-r from-cyan-500 to-blue-500 p-6  rounded-lg ">
+                        <div class="my-auto">
+                            
+                       
+                            <div class="text-lg text-white-300">Numero de sitios: {stats.nPlaces} </div>
+                       
+                            <div class="text-lg text-white-300">Numero de lugares guardados: {stats.nSavedPlaces} </div>
+                       
+                            <div class="text-lg text-white-300">Numero de usuarios: {stats.nUsers} </div>
+                       
+                           
+                       
+                       
+                   
+                    
+                        <div className="stat">
+                                <div className="stat-figure text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                </div>
+                                <div className="text-lg text-white-300">Total de ciudades    {stats.nCities}</div>
+                                    
+                                </div>
+
+
+                        </div>
+
+                        <div className="stat">
+                                <div className="stat-figure text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                </div>
+                                <div className="text-lg text-white-300">Total de comentarios    {stats.nComments}</div>
+                                    
+                                </div>
+
+
+                        </div>
+
+                        <div className="stat">
+                                <div className="stat-figure text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                </div>
+                                <div className="text-lg text-white-300">Total de likes    {stats.nLikes}</div>
+                                    
+                                
+
+
+                        </div>
+
+                        <div className="stat">
+                                <div className="stat-figure text-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                </div>
+                                <div className="text-lg text-white-300">Total de sitios   {stats.nPlaces}</div>
+                                    
+                                
+
+
+                        </div>
+
                     </div>
-                    Gracias a nuestros Colaboradores:
+
+                    
+                   
                     
                     
                     {users.map(u => {
@@ -29,11 +84,8 @@ export default function Colaboradores({ users, stats }) {
                     })}
                 </div>
 
-                <div class="grid justify-items-center">. </div>
-                <div class="grid justify-items-center">. </div>
-                <div class="grid justify-items-center">. </div>
-                <div class="grid justify-items-center">Muchas gracias  a todos (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</div>
-            </div>
+
+                
         </>
     )
 
