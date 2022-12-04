@@ -26,7 +26,7 @@ export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
     }
     return (
 
-        <div className="flex text-black mx-auto mt-8 bg-gray-200 w-2/3 h-40 rounded-2xl border-2 border-gray-600">
+        <div className="bg-white  shadow-lg hover:shadow-2xl flex text-black mx-auto mt-8  w-2/3 h-40 shadow-lg rounded-2xl">
             <div className="ml-8 h-full">
                 <div className="flex w-full font-semibold mt-8 text-ellipsis">
                     {name} {gmail} {spam}

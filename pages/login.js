@@ -6,7 +6,7 @@ import Sidebar from "@/components/Sidebar";
 export default function Login() {
   return (
     <>
-    <div className="w-full flex">
+    <div className="w-full ">
       <Sidebar />
       <div className="w-full grid justify-items-center mt-4 ">
         <form
@@ -22,57 +22,60 @@ export default function Login() {
           }}
           className="mt-4 w-1/4"
         >
-          <div>
-          <div className="bg-white rounded-md px-6 py-8 w-full ml-50 mx-auto ">
-            <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Sign Up</h1>
-            <div className="space-y-4">
-
-              <div className="flex gap-x-2 mt-1">
-                <label className="block w-full">
-                  <span className="px-1 text-base text-gray-600">Dirección de correo electrónico:</span>
+          <div className="">
+          
+      <div className=" bg-purple-200  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+        <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Login</h1>
+        <div className="space-y-4">
+      
+      
+        <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
+        <label className="block w-full">
+        <span className="mt-10 px-1 text-sm text-xl text-gray-600">Introduce tu nombre de usuario:</span>
                   <input
-                    type="username"
+                    type="sername"
                     id="username"
                     name="username"
                     autoComplete="username"
-                    className="text-md block px-3 py-2 rounded-lg w-full
-                  bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
-                  focus:bg-white focus:border-gray-600 focus:outline-none"
+                    placeholder="Nombre de usuario "
+                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />
-                </label>
+                  </label>
+                
               </div>
-              <div className="flex gap-x-2 mt-1">
-                <label className="block w-full">
-                  <span className=" px-1 text-base text-gray-600">Contraseña:</span>
+          
+              <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg  mb-10 duration-300 focus-within:border-indigo-500 ">
+              <label className="block w-full">
+              <span className="mt-10 px-1 text-sm text-xl text-gray-600">Introduce tu contraseña:</span>
                   <input
                     type="password"
                     id="password"
                     name="password"
                     autoComplete="password"
-                    className="text-md block px-3 py-2 rounded-lg w-full
-                  bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
-                  focus:bg-white focus:border-gray-600 focus:outline-none"
+                    placeholder="contraseña"
+                    className="w-full border-white bg-transparent outline-none focus:outline-none"
                     required
                   />
-                </label>
+                  </label>
+                
               </div>
-
-
-            </div>
-            </div>
+         
+        
+              </div>
+        </div>
 
             <button
               type="submit"
-            className ="flex mt-3 bg-red-500 hover:bg-yellow-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full">
-              Loguear
+            className ="flex mt-3 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full">
+              Entrar
             </button>
         
        
           <div className="w-full flex mx-auto">
             <button className ="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full">
             <Link href="/register">
-              Registrarse
+              ¿No tienes una cuenta?
             </Link>
             </button>
           </div>
