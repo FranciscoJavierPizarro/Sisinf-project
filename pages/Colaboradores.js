@@ -108,28 +108,13 @@ export default function Colaboradores({ users, stats }) {
                     </div>
                     <div className="grid grid-cols-3 gap-1 justify-self-center  mb-20 mt-5 w-2/3 ml-10 ">
                    
-                        {users.map(u => {
-                            return(
-                                <div className="mb-6 card ml-12 bg-white  shadow-lg hover:shadow-2xl  flex flex-col items-center justify-center p-4 shadow-lg rounded-2xl w-2/3">
-                                    <div className="profile mx-auto rounded-full py-2 w-16 "> 
-                                        <img src="https://www.disneyplusinformer.com/wp-content/uploads/2021/09/The-Simpsons-Profile-Icons-8.png" alt="profile"></img>
-                                    </div>
-                                    <div className="name text-gray-800 text-2xl font-medium mt-4 ">
-                                        <p>{u.name}</p>
-                                        <div className="username text-gray-500">
-                                            <p key={u.id}></p>
-                                        </div>
-                                       
-                                        {!(u?.spam === undefined) && 
-                                        <Link href={u.spam} className="hover:cursor-pointer">
-                                            <FaUserPlus className="ml-4 text-green-400 hover:cursor-pointer" />
-                                        </Link>
-                                        }
-                                    </div>
-                                    
-                                </div>
-                            )
-                        })}
+                    {users.map(u => {
+                        return(
+                        <p key={u.id}>
+                            {u.name} {u.gmail}
+                            {!(u?.spam === undefined) && <Link href={u.spam}>{u.spam}</Link>}
+                        </p>)
+                    })}
 
                     </div>
 
