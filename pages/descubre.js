@@ -1,11 +1,9 @@
 import Layout from '@/components/Layout'
-import Link from 'next/link';
 import PlaceCard from '@/components/PlaceCard';
-import { FiMapPin } from "react-icons/fi";
 import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react';
-import { FiStar, FiHeart,FiSearch } from "react-icons/fi";
+import { FiHome, FiCoffee,FiSearch } from "react-icons/fi";
 
 export default function Home({ places }) {
   const { data: session } = useSession()
@@ -20,21 +18,21 @@ export default function Home({ places }) {
   function monumento() {
     if (typeofplace == "monumento") {
       return <>
-        <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-red-500"} />
+        <FiHome className={"ml-1.5 h-9 w-9 text-black fill-stone-400"} />
       </>;
     }
     return <>
-      <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-transparent"} /></>;
+      <FiHome className={"ml-1.5 h-9 w-9 text-black fill-transpartent"} /></>;
   }
 
   function bar() {
     if (typeofplace == "bar") {
       return <>
-        <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-yellow-400"} />
+        <FiCoffee className={"ml-2 h-9 w-9 text-black fill-amber-700"} />
       </>;
     }
     return <>
-      <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-transparent"} /></>;
+      <FiCoffee className={"ml-2 h-9 w-9 text-black fill-transparent"} /></>;
   }
 
   return (

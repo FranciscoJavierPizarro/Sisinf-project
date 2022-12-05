@@ -116,8 +116,8 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                 <div className="w-28 h-28 mt-6 ml-8 rounded-2xl">
                     <img src={urlPhotos} className="mx-auto w-28 h-28" />
                 </div>
-                <div className="ml-8  w-5/6 h-full align-right">
-                    <div className="flex mr-4 mt-4 justify-end text-right">
+                <div className="ml-8 w-2/3 h-2/3 align-right">
+                    <div className="flex mr-4 mt-3 justify-end text-right">
                         {session && <>
                             {(session?.user?.email === autor || session?.user?.image === true) && <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e, idPlace, idCity) }}>
                                 <FiTrash2 />
@@ -135,19 +135,22 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
 
 
                             {/* mover la cantidad de likes de sitio */}
-                            <sub className="ml-0 mt-3 text-gray-500">
+                            <sub className="mt-3 text-gray-500">
                                 {nlikes}
                             </sub>
                         </>}
                     </div>
-                    <div className="capitalize flex w-full align-left font-semibold">
+                    <div className="mt-1 flex w-full">
+                    <div className="flex text-2xl w-auto align-left font-semibold">
                         {title}
+                        </div>
 
                         {!(urlMaps === "") && <Link href={urlMaps} className="hover:cursor-pointer">
-                            <FiMapPin className="ml-8 text-red-400 hover:cursor-pointer" />
+                            <FiMapPin className="ml-4 mr-2 flex w-10 text-red-400 hover:cursor-pointer" />
                         </Link>}
+                    
                     </div>
-                    <div className=" capitalize text-black text-left text-base ">
+                    <div className="text-black text-left text-base ">
                         {descp}
                     </div>
                 </div>

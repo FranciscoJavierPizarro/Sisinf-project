@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import { useSession } from "next-auth/react"
-import { FiStar, FiHeart } from "react-icons/fi";
+import { FiCoffee,FiHome } from "react-icons/fi";
 import React, { useState } from 'react';
 export default function AddPlace(id) {
 
@@ -38,33 +38,33 @@ export default function AddPlace(id) {
   function monumento() {
     if (typeofplace == "monumento") {
       return <>
-        <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-red-500"} />
+        <FiHome className={"ml-1.5 h-9 w-9 text-black fill-stone-400"} />
       </>;
     }
     return <>
-      <FiHeart className={"ml-1.5 h-6 w-6 text-red-600 fill-transparent"} /></>;
+      <FiHome className={"ml-1.5 h-9 w-9 text-black fill-transpartent"} /></>;
   }
 
   function bar() {
     if (typeofplace == "bar") {
       return <>
-        <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-yellow-400"} />
+        <FiCoffee className={"ml-2 h-9 w-9 text-black fill-amber-700"} />
       </>;
     }
     return <>
-      <FiStar className={"ml-2 h-6 w-6 text-yellow-500 fill-transparent"} /></>;
+      <FiCoffee className={"ml-2 h-9 w-9 text-black fill-transparent"} /></>;
   }
 
   return (
     <>
-      <div className="flex justify-center h-5/6">
+      <div className="flex justify-center h-11/12">
 
         <form
           method="post"
           onSubmit={(e) => {
             handleSubmit(e, id, session)
           }}
-          className="mt-8"
+          className="mt-8 h-full"
         >
 
           <div className="bg-white rounded-md px-6 py-8 w-full mx-auto h-full">
@@ -118,37 +118,39 @@ export default function AddPlace(id) {
                   />
                 </label>
               </div>
-              <div className="h-40">
+              <div >
                 <span className="ml-2 text-md text-gray-600">Añadir descripción del sitio:</span>
                 <textarea id="descp" maxlength="251" required className="h-5/6 mt-2  w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
               </div>
-              <button onClick={(e) => {
-                e.preventDefault()
-                if (typeofplace != "monumento") {
-                  setType("monumento")
-                }
-                else {
-                  setType("")
-                }
-              }}>
-                {monumento()}
-              </button>
-              <button onClick={(e) => {
-                e.preventDefault()
-                if (typeofplace != "bar") {
-                  setType("bar")
-                }
-                else {
-                  setType("")
-                }
-              }}>
-                {bar()}
-              </button>
-
+              <span className="ml-1 text-lg text-gray-700">Marcar alguna opción si este sitio es un monumento o un bar<br></br></span>
+              <div className="flex justify-center h-auto">
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "monumento") {
+                    setType("monumento")
+                  }
+                  else {
+                    setType("")
+                  }
+                }}>
+                  {monumento()}
+                </button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "bar") {
+                    setType("bar")
+                  }
+                  else {
+                    setType("")
+                  }
+                }}>
+                  {bar()}
+                </button>
+              </div>
 
               <button
                 type="submit"
-                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-gray-300 hover:bg-gray-500 rounded-md hover:bg-blue-200"
+                className= "capitalize h-auto mt-5 w-full tracking-normal px-4 py-3 text-md font-bold text-center text-black bg-gray-300 hover:bg-gray-500 rounded-md hover:bg-blue-200"
               >
                 Añadir
               </button>

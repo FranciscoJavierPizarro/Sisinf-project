@@ -43,7 +43,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
                 </div>
                 <div className="w-2/3 ml-8 h-full">
 
-                    <div className="flex w-full align-left font-semibold mt-8">
+                    <div className="capitalize flex w-full align-left font-semibold mt-8">
 
                         {title}
                         <Link href={urlMaps} className="hover:cursor-pointer">
@@ -57,7 +57,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
 
 
                     </div>
-                    <p className="h-full text-justify text-base text-ellipsis">
+                    <p className="h-full text-left text-base text-ellipsis mr-2">
                         {descp}
                     </p>
                     {session && <>

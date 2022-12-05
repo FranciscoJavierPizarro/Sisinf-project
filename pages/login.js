@@ -53,7 +53,7 @@ export default function Login() {
                     id="password"
                     name="password"
                     autoComplete="password"
-                    placeholder="contraseña"
+                    placeholder="Contraseña"
                     className="w-full border-white bg-transparent outline-none focus:outline-none"
                     required
                   />

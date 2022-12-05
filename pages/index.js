@@ -49,7 +49,7 @@ export default function Home({ cities }) {
 
                   <button
                     type="submit"
-                    className=" grid justify-items-center items-center text-2xl w-1/6 text-white bg-cyan-900 hover:bg-cyan-700 rounded-r-lg hover:bg-blue-200">
+                    className=" grid justify-items-center items-center text-2xl w-1/6 text-white bg-cyan-900 hover:bg-cyan-700 rounded-r-lg">
                     <FiSearch/>
                   </button>
                  
@@ -62,7 +62,7 @@ export default function Home({ cities }) {
 
 
 
-          <div className="w-full mx-auto h-full capitalize text-white text-2xl text-center flex flex-wrap gap-x-2 justify-around">
+          <div className="w-full mx-auto h-full text-white text-2xl text-center flex flex-wrap gap-x-2 justify-around">
             {cities.filter(u => u?.name.toLowerCase().includes(filtro.toLowerCase())).map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp={u.descp} urlCity={"/city/" + u.id} likes={0} Validacion={u.Validacion} idCity={u.id} />)}
           </div>
           {session &&

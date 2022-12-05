@@ -1,7 +1,6 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link';
 import PlaceCard from '@/components/PlaceCard';
-import { CiBeerMugFull,CiBank } from "react-icons/ci";
 
 import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
@@ -44,7 +43,8 @@ export default function Home({ city, cityPlaces, weather }) {
         <Sidebar />
         <div className='flex-col content-center flex-1 text-2xl'>
           <div className="mt-4 flex justify-center"> Estás visitando {city.name}</div>
-          {!(weather === undefined) && !(weather.main === undefined) && <><div className="flex justify-center text-2xl"><FiThermometer/> La temperatura es de {weather.main.temp} ºC</div></>}
+          {!(weather === undefined) && !(weather.main === undefined) && <><div className="flex justify-center text-2xl">
+            <FiThermometer className='fill-sky-200'/> La temperatura es de {weather.main.temp} ºC</div></>}
           <br></br>
 
           <div className="flex justify-center h-24 ">

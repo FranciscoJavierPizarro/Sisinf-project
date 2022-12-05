@@ -102,7 +102,7 @@ export default function Register() {
           </div>    
         <button
                 type="submit"
-                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-purple-400 hover:bg-purple-500 rounded-md "
+                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-base font-bold text-center text-black bg-purple-400 hover:bg-purple-500 rounded-md "
                 >
                 Registrarse
               </button>
