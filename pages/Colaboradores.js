@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
 import Sidebar from '@/components/Sidebar';
 import Link from "next/link"
+import UserCard from '@/components/UserCard';
 import { FaCity,FaCommentAlt,FaHeart,FaMonument,FaUserAlt,FaInstagram,FaUserPlus} from "react-icons/fa";
 
 import { BsListStars} from "react-icons/bs";
@@ -108,13 +109,7 @@ export default function Colaboradores({ users, stats }) {
                     </div>
                     <div className="grid grid-cols-3 gap-1 justify-self-center mb-10 mt-10 w-2/3 ml-10 ">
                    
-                    {users.map(u => {
-                        return(
-                        <p key={u.id}>
-                            {u.name} {u.gmail}
-                            {!(u?.spam === undefined) && <Link href={u.spam}>{u.spam}</Link>}
-                        </p>)
-                    })}
+                    {users.map(u =>  <UserCard key={u.id} name={u.name}  gmail={u.gmail} spam={u.spam}/>)}
 
                     </div>
 

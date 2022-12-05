@@ -44,7 +44,7 @@ export default function Home({ city, cityPlaces, weather }) {
         <div className='flex-col content-center flex-1 text-2xl'>
           <div className="mt-4 flex justify-center"> Estás visitando {city.name}</div>
           {!(weather === undefined) && !(weather.main === undefined) && <><div className="flex justify-center text-2xl">
-            <FiThermometer className='fill-sky-200'/> La temperatura es de {weather.main.temp} ºC</div></>}
+            <FiThermometer className='fill-sky-200 mt-1'/> La temperatura es de {weather.main.temp} ºC</div></>}
           <br></br>
 
           <div className="flex justify-center h-24 ">
@@ -118,7 +118,7 @@ export default function Home({ city, cityPlaces, weather }) {
             </div>
             {session &&
               <Link href={"/addPlace/" + city.id} className='test-white'>
-                <div className='mx-auto capitalize w-40 mx-auto mt-8 text-black border-2 border-gray-600 px-4 py-3 text-xs font-bold text-center bg-gray-200 rounded-md hover:bg-gray-300 hover:cursor-pointer'>
+                <div className='mx-auto capitalize w-40 mx-auto mt-8 text-black  px-4 py-3 text-xs font-bold text-center bg-purple-200 rounded-md hover:bg-purple-300 hover:cursor-pointer'>
                   Añadir sitio
                 </div>
               </Link>

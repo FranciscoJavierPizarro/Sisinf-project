@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout"
 import { useSession } from "next-auth/react"
 import { FiCoffee,FiHome } from "react-icons/fi";
+import Sidebar from "@/components/Sidebar"
 import React, { useState } from 'react';
 export default function AddPlace(id) {
 
@@ -58,7 +59,7 @@ export default function AddPlace(id) {
   return (
     <>
       <div className="flex justify-center h-11/12">
-
+      <Sidebar />
         <form
           method="post"
           onSubmit={(e) => {
@@ -67,57 +68,61 @@ export default function AddPlace(id) {
           className="mt-8 h-full"
         >
 
-          <div className="bg-white rounded-md px-6 py-8 w-full mx-auto h-full">
+          <div className="bg-purple-200  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
             <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Añadir nombre de un sitio</h1>
             <div className="space-y-4 h-full">
-
-
-              <div >
-                <label type="name" className="block w-full">
-                  <span className="px-1 text-md text-gray-600">Añadir nombre del sitio:</span>
-                  <input
+            <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
+              <label className="block w-full">
+              <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir nombre del sitio:</span>
+                        <input
                     type="name"
                     id="name"
                     name="name"
                     autoComplete="name"
-                    className="text-md block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
-                focus:bg-white focus:border-gray-600 focus:outline-none"
-
+                    placeholder="Nombre del sitio"
+                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />
-                </label>
-              </div>
-              <div >
-                <label className="block w-full">
-                  <span className="px-1 text-md text-gray-600">Añadir URL de Google Maps:</span>
-                  <input
+                  </label>
+                
+            </div>
+
+            
+
+             
+            <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
+              <label className="block w-full">
+              <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir URL de Google Maps:</span>
+                        <input
                     type="url"
                     id="maps"
                     name="maps"
                     autoComplete="maps"
-                    className="text-md block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
-                focus:bg-white focus:border-gray-600 focus:outline-none"
-                    
+                    placeholder="Enlace a Google Maps "
+                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
+                    required
                   />
-                </label>
-              </div>
-              <div >
+                  </label>
+                
+             </div>
+
+
+              <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
                 <label className="block w-full">
-                  <span className="px-1 text-md text-gray-600">Añadir URL foto:</span>
-                  <input
+                <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir URL foto:</span>
+                          <input
                     type="url"
                     id="photo"
                     name="photo"
                     autoComplete="photo"
-                    className="text-md block px-3 py-2 rounded-lg w-full
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 
-                focus:bg-white focus:border-gray-600 focus:outline-none"
+                    placeholder="Enlace a la foto "
+                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />
-                </label>
+                  </label>
+                
               </div>
+
               <div >
                 <span className="ml-2 text-md text-gray-600">Añadir descripción del sitio:</span>
                 <textarea id="descp" maxlength="251" required className="h-5/6 mt-2  w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
@@ -150,8 +155,8 @@ export default function AddPlace(id) {
 
               <button
                 type="submit"
-                className= "capitalize h-auto mt-5 w-full tracking-normal px-4 py-3 text-md font-bold text-center text-black bg-gray-300 hover:bg-gray-500 rounded-md hover:bg-blue-200"
-              >
+                className="capitalize w-full tracking-normal px-2 py-3 focus:ring-black focus:ring-1 text-xs font-bold text-center text-black bg-purple-300 hover:bg-purple-400 rounded-md "
+                >
                 Añadir
               </button>
             </div>

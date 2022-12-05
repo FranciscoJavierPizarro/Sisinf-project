@@ -42,9 +42,9 @@ export default function Register() {
       
       
         <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
-        <label className="block w-full">
-        <span className="mt-10 px-1 text-sm text-xl text-gray-600">Introduce un nombre de usuario:</span>
-                  <input
+          <label className="block w-full">
+          <span className="mt-10 px-1 text-sm text-xl text-gray-600">Introduce un nombre de usuario:</span>
+                    <input
                     type="name"
                     id="name"
                     name="name"
@@ -55,7 +55,7 @@ export default function Register() {
                   />
                   </label>
                 
-              </div>
+        </div>
           <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
           <label className="block w-full">
           <span className="mt-10 mb-10 px-1 text-sm text-xl text-gray-600">Introduce un correo electrónico:</span>
@@ -102,7 +102,7 @@ export default function Register() {
           </div>    
         <button
                 type="submit"
-                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-base font-bold text-center text-black bg-purple-400 hover:bg-purple-500 rounded-md "
+                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-base font-bold text-center text-black bg-purple-300 hover:bg-purple-400 rounded-md "
                 >
                 Registrarse
               </button>

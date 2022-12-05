@@ -69,7 +69,7 @@ export default function Sidebar() {
     ))
     return (
         <div className="w-64">
-            <aside className="w-64 h-full absolute top-0 left-0 bg-gradient-to-t from-cyan-500 to-blue-500" aria-label="Sidebar">
+            <aside className="w-64 h-full absolute top-0 left-0 bg-gradient-to-t from-cyan-500 to-blue-500   border-r-2 border-indigo-100 shadow-md rounded-tr-3xl rounded-br-3xl" aria-label="Sidebar">
             <div className="grid h-36 mb-2 mt-4 justify-items-center text-white">
                 <img src={"/logoNombre.png"} className=" justify-self-center h-36"/>
 
