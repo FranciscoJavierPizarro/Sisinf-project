@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import { useSession } from "next-auth/react"
-import { FiCoffee,FiHome } from "react-icons/fi";
+import { FiCoffee,FiHome,FiImage,FiUser } from "react-icons/fi";
 import Sidebar from "@/components/Sidebar"
 import React, { useState } from 'react';
 export default function AddPlace(id) {
@@ -39,21 +39,59 @@ export default function AddPlace(id) {
   function monumento() {
     if (typeofplace == "monumento") {
       return <>
-        <FiHome className={"ml-1.5 h-9 w-9 text-black fill-stone-400"} />
-      </>;
+      <div className="grid justify-items-center text-transparent hover:text-black">
+        <FiHome className="ml-1.5 h-9 w-9 text-black fill-stone-400 "/>
+        <span> Monumento</span>
+      </div></>;
     }
     return <>
-      <FiHome className={"ml-1.5 h-9 w-9 text-black fill-transpartent"} /></>;
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiHome className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Monumento</span>
+      </div></>;
   }
 
   function bar() {
     if (typeofplace == "bar") {
       return <>
-        <FiCoffee className={"ml-2 h-9 w-9 text-black fill-amber-700"} />
-      </>;
+            <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiCoffee className="ml-1.5 h-9 w-9 text-black fill-orange-800 "/>
+      <span> Bar</span>
+      </div></>;
     }
     return <>
-      <FiCoffee className={"ml-2 h-9 w-9 text-black fill-transparent"} /></>;
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiCoffee className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Bar</span>
+      </div></>;
+  }
+  function estatua() {
+    if (typeofplace == "estatua") {
+      return <>
+            <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiUser className="ml-1.5 h-9 w-9 text-black fill-stone-400 "/>
+      <span> Estatua</span>
+      </div></>;
+    }
+    return <>
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiUser className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Estatua</span>
+      </div></>;
+  }
+  function paisaje() {
+    if (typeofplace == "paisaje") {
+      return <>
+            <div className="grid justify-items-center ">
+      <FiImage className="ml-1.5 h-9 w-9 text-black fill-green-400 "/>
+      <span> Paisaje</span>
+      </div></>;
+    }
+    return <>
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiImage className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Paisaje</span>
+      </div></>;
   }
 
   return (
@@ -68,19 +106,19 @@ export default function AddPlace(id) {
           className="mt-8 h-full"
         >
 
-          <div className=" bg-blue-300  border-2 border-white-300 rounded-md px-6 py-10 w-full ml-70 mx-auto">
-            <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Añadir nombre de un sitio</h1>
+          <div className="bg-sky-300  border-2 border-white-300 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+            <h1 className="text-center text-2xl font-bold text-gray-900 mb-10">Añadir nombre de un sitio</h1>
             <div className="space-y-4 h-full">
             <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
               <label className="block w-full">
-              <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir nombre del sitio:</span>
+              <span className="mt-8 px-1 text-xl text-black">Añadir nombre del sitio:</span>
                         <input
                     type="name"
                     id="name"
                     name="name"
                     autoComplete="name"
                     placeholder="Nombre del sitio"
-                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
+                    className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />
                   </label>
@@ -92,14 +130,14 @@ export default function AddPlace(id) {
              
             <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
               <label className="block w-full">
-              <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir URL de Google Maps:</span>
+              <span className="mt-10 px-1 text-xl text-black">Añadir URL de Google Maps:</span>
                         <input
                     type="url"
                     id="maps"
                     name="maps"
                     autoComplete="maps"
                     placeholder="Enlace a Google Maps "
-                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
+                    className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none focus:outline-none"
                     required
                   />
                   </label>
@@ -109,14 +147,14 @@ export default function AddPlace(id) {
 
               <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
                 <label className="block w-full">
-                <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir URL foto:</span>
+                <span className="mt-10 px-1 text-xl text-black">Añadir URL foto:</span>
                           <input
                     type="url"
                     id="photo"
                     name="photo"
                     autoComplete="photo"
                     placeholder="Enlace a la foto "
-                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
+                    className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />
                   </label>
@@ -124,11 +162,11 @@ export default function AddPlace(id) {
               </div>
 
               <div >
-                <span className="ml-2 text-md text-gray-600">Añadir descripción del sitio:</span>
-                <textarea id="descp" maxlength="251" required className="h-5/6 mt-2  w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
+                <span className="ml-2 text-xl text-black">Añadir descripción del sitio:</span>
+                <textarea id="descp" maxlength="251" required className="h-full mt-2 w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
               </div>
-              <span className="ml-1 text-lg text-gray-700">Marcar alguna opción si este sitio es un monumento o un bar<br></br></span>
-              <div className="flex justify-center h-auto">
+              <span className="ml-1 text-lg text-gray-800">Marcar opción si es un monumento, bar, estatua o un paisaje<br></br></span>
+              <div className="flex justify-center h-auto ">
                 <button onClick={(e) => {
                   e.preventDefault()
                   if (typeofplace != "monumento") {
@@ -137,7 +175,7 @@ export default function AddPlace(id) {
                   else {
                     setType("")
                   }
-                }}>
+                }} className="w-1/6">
                   {monumento()}
                 </button>
                 <button onClick={(e) => {
@@ -148,14 +186,36 @@ export default function AddPlace(id) {
                   else {
                     setType("")
                   }
-                }}>
+                }} className="w-1/6">
                   {bar()}
+                </button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "estatua") {
+                    setType("estatua")
+                  }
+                  else {
+                    setType("")
+                  }
+                }} className="w-1/6">
+                  {estatua()}
+                </button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "paisaje") {
+                    setType("paisaje")
+                  }
+                  else {
+                    setType("")
+                  }
+                }} className="w-1/6">
+                  {paisaje()}
                 </button>
               </div>
 
               <button
                 type="submit"
-                className="capitalize w-full tracking-normal px-2 py-3 focus:ring-black focus:ring-1 text-xs font-bold text-center text-black bg-blue-400 hover:bg-blue-600  rounded-md "
+                className="mx-auto capitalize w-full mx-auto mt-4 text-white px-4 py-3 text-sm font-bold text-center rounded-md bg-blue-500 hover:bg-blue-600  hover:cursor-pointer"
                 >
                 Añadir
               </button>

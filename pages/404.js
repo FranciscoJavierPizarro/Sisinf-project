@@ -7,7 +7,7 @@ export default function Custom404() {
       <>
       <div className='w-full flex'>
         <Sidebar />
-        <div className="flex-col mx-auto w-full content-center text-center p-8">
+        <div className="flex-col mx-auto w-full content-center text-center text-lg p-8">
           Has intentado entrar a un sitio que no existe vuelve atrás porfavor :D
           
           <Link href="https://youtu.be/7_8slCdJseg">

@@ -67,7 +67,7 @@ export default function Home({ cities }) {
           </div>
           {session &&
             <Link href="/addCity" className='w-full h-full'>
-              <div className='capitalize w-40 mx-auto text-black  px-4 py-3 text-xs font-bold text-center  rounded-md bg-blue-400 hover:bg-blue-600  hover:cursor-pointer'>
+              <div className='mx-auto capitalize w-40 mx-auto text-white px-4 py-3 text-sm font-bold text-center rounded-md bg-blue-500 hover:bg-blue-600  hover:cursor-pointer'>
                 Añadir una ciudad
               </div>
             </Link>

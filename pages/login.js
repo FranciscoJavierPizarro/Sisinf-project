@@ -6,9 +6,9 @@ import Sidebar from "@/components/Sidebar";
 export default function Login() {
   return (
     <>
-    <div className="w-full ">
+    <div className="flex justify-center w-full ">
       <Sidebar />
-      <div className="w-full grid justify-items-center mt-4 ">
+      <div className="w-full grid justify-items-center mt-4">
         <form
           method="post"
           onSubmit={(e) => {
@@ -20,25 +20,25 @@ export default function Login() {
               callbackUrl: '/'
             } )
           }}
-          className="mt-4 w-1/4"
+          className="mt-4 w-1/3"
         >
           <div className="">
           
       <div className="  bg-blue-300  border-2 border-white-300   rounded-md px-6 py-10 w-full ml-70 mx-auto">
-        <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Login</h1>
+        <h1 className="text-center text-2xl font-bold text-gray-900 mb-10">Login</h1>
         <div className="space-y-4">
       
       
         <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
         <label className="block w-full">
-        <span className="mt-10 px-1 text-sm text-xl text-gray-600">Introduce tu nombre de usuario:</span>
+        <span className="mt-10 px-1 text-sm text-xl text-black">Introduce tu nombre de usuario:</span>
                   <input
                     type="sername"
                     id="username"
                     name="username"
                     autoComplete="username"
                     placeholder="Nombre de usuario "
-                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
+                    className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />
                   </label>
@@ -47,14 +47,14 @@ export default function Login() {
           
               <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg  mb-10 duration-300 focus-within:border-indigo-500 ">
               <label className="block w-full">
-              <span className="mt-10 px-1 text-sm text-xl text-gray-600">Introduce tu contraseña:</span>
+              <span className="mt-10 px-1 text-sm text-xl text-black">Introduce tu contraseña:</span>
                   <input
                     type="password"
                     id="password"
                     name="password"
                     autoComplete="password"
                     placeholder="Contraseña"
-                    className="w-full border-white bg-transparent outline-none focus:outline-none"
+                    className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none focus:outline-none"
                     required
                   />
                   </label>

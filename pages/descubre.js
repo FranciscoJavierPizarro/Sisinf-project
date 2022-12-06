@@ -3,7 +3,7 @@ import PlaceCard from '@/components/PlaceCard';
 import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react';
-import { FiHome, FiCoffee,FiSearch } from "react-icons/fi";
+import { FiHome, FiCoffee,FiSearch,FiUser,FiImage } from "react-icons/fi";
 
 export default function Home({ places }) {
   const { data: session } = useSession()
@@ -18,21 +18,59 @@ export default function Home({ places }) {
   function monumento() {
     if (typeofplace == "monumento") {
       return <>
-        <FiHome className={"ml-1.5 h-9 w-9 text-black fill-stone-400"} />
-      </>;
+      <div className="grid justify-items-center text-transparent hover:text-black">
+        <FiHome className="ml-1.5 h-9 w-9 text-black fill-stone-400 "/>
+        <span> Monumento</span>
+      </div></>;
     }
     return <>
-      <FiHome className={"ml-1.5 h-9 w-9 text-black fill-transpartent"} /></>;
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiHome className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Monumento</span>
+      </div></>;
   }
 
   function bar() {
     if (typeofplace == "bar") {
       return <>
-        <FiCoffee className={"ml-2 h-9 w-9 text-black fill-amber-700"} />
-      </>;
+            <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiCoffee className="ml-1.5 h-9 w-9 text-black fill-orange-800 "/>
+      <span> Bar</span>
+      </div></>;
     }
     return <>
-      <FiCoffee className={"ml-2 h-9 w-9 text-black fill-transparent"} /></>;
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiCoffee className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Bar</span>
+      </div></>;
+  }
+  function estatua() {
+    if (typeofplace == "estatua") {
+      return <>
+            <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiUser className="ml-1.5 h-9 w-9 text-black fill-stone-400 "/>
+      <span> Estatua</span>
+      </div></>;
+    }
+    return <>
+    <div className="grid justify-items-center text-transparent hover:text-black">
+      <FiUser className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+      <span> Estatua</span>
+      </div></>;
+  }
+  function paisaje() {
+    if (typeofplace == "paisaje") {
+      return <>
+      <div className="grid justify-items-center text-transparent hover:text-black">
+        <FiImage className="ml-1.5 h-9 w-9 text-black fill-green-400 "/>
+        <span> Paisaje</span>
+      </div></>;
+    }
+    return <>
+      <div className="grid justify-items-center text-transparent hover:text-black">
+        <FiImage className="ml-1.5 h-9 w-9 text-black fill-transpartent "/>
+        <span> Paisaje</span>
+      </div></>;
   }
 
   return (
@@ -79,30 +117,52 @@ export default function Home({ places }) {
             </form>
 
           </div>
-            <div className="flex justify-center">
+          <div className="flex justify-center h-auto text-xl">
           <button onClick={(e) => {
-            e.preventDefault()
-            if (typeofplace != "monumento") {
-              setType("monumento")
-            }
-            else {
-              setType("")
-            }
-          }}>
-            {monumento()}
-          </button>
-          <button onClick={(e) => {
-            e.preventDefault()
-            if (typeofplace != "bar") {
-              setType("bar")
-            }
-            else {
-              setType("")
-            }
-          }}>
-            {bar()} 
-          </button>
-          </div>
+                  e.preventDefault()
+                  if (typeofplace != "monumento") {
+                    setType("monumento")
+                  }
+                  else {
+                    setType("")
+                  }
+                }} className="w-1/12">
+                  {monumento()}
+                </button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "bar") {
+                    setType("bar")
+                  }
+                  else {
+                    setType("")
+                  }
+                }} className="w-1/12">
+                  {bar()}
+                </button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "estatua") {
+                    setType("estatua")
+                  }
+                  else {
+                    setType("")
+                  }
+                }} className="w-1/12">
+                  {estatua()}
+                </button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  if (typeofplace != "paisaje") {
+                    setType("paisaje")
+                  }
+                  else {
+                    setType("")
+                  }
+                }} className="w-1/12">
+                  {paisaje()}
+                </button>
+              </div>
           <div className='flex-col content-center'>
             <div className='mx-auto flex flex-wrap gap-x-4 w-4/5'>
               {places.filter(u => u?.name.toLowerCase().includes(filtro.toLowerCase()) && (typeofplace === "" || typeofplace === u.kindOfPlace))

@@ -9,10 +9,10 @@ export default function Colaboradores({ users, stats }) {
     return (
         <>
             <div className='w-full'>
-                <div className="grid mt-3 text-2xl ">
+                <div className="flex w-full mt-3 text-2xl ">
                     <Sidebar />
-                    
-                    <div className="px-6 py-8 w-full ml-6 mx-auto h-5">
+                    <div className="grid w-full">
+                    <div className="px-6 py-8 w-full mx-auto h-5">
                         <h1 className="text-center text-2xl font-bold text-white-500 mb-10">Estadísticas</h1>
                     </div>
 
@@ -104,7 +104,7 @@ export default function Colaboradores({ users, stats }) {
                             
 
                     </div>
-                    <div className="px-10 py-1 w-full ml-10 mx-auto h-5">
+                    <div className="px-10 py-1 w-full mx-auto h-5">
                         <h1 className="text-center text-2xl font-bold text-white-500">Nuestros colaboradores</h1>
                     </div>
                     <div className="grid grid-cols-3 gap-1 justify-self-center mb-10 mt-10 w-2/3 ml-10 ">
@@ -118,7 +118,7 @@ export default function Colaboradores({ users, stats }) {
                     
                 </div>
             </div>
-                
+            </div>
         </>
     )
 

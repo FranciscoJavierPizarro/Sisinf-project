@@ -13,7 +13,7 @@ export default function Home({cities, users}) {
        
       <div className='w-full flex justify-center'>
         <Sidebar/>
-        <div className="grid justify-items-center w-full">
+        <div className="grid mt-2 justify-items-center w-full">
         {cities.length > 0 && <h1 className="grid w-5/6 justify-items-center text-white text-2xl text-center font
         -bold">
           Aprobar ciudades
