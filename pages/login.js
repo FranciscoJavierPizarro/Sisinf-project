@@ -22,22 +22,22 @@ export default function Login() {
           }}
           className="mt-4 w-1/3"
         >
-          <div className="">
+          <div>
           
-      <div className="  bg-blue-300  border-2 border-white-300   rounded-md px-6 py-10 w-full ml-70 mx-auto">
+      <div className=" bg-sky-300  border-2 border-white-300   rounded-md px-6 py-10 w-full ml-70 mx-auto">
         <h1 className="text-center text-2xl font-bold text-gray-900 mb-10">Login</h1>
         <div className="space-y-4">
       
       
         <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
         <label className="block w-full">
-        <span className="mt-10 px-1 text-sm text-xl text-black">Introduce tu nombre de usuario:</span>
+        <span className="mt-10 px-1 text-sm text-xl text-black">Introduce tu correo electrónico:</span>
                   <input
-                    type="sername"
+                    type="name"
                     id="username"
                     name="username"
                     autoComplete="username"
-                    placeholder="Nombre de usuario "
+                    placeholder="Direccion de correo electrónico "
                     className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none  focus:outline-none"
                     required
                   />

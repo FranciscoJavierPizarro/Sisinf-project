@@ -44,7 +44,7 @@ export default function Register() {
       }}
       className="mt-4"
       >
-      <div className="bg-blue-300  border-2 border-white-300  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+      <div className="bg-sky-300  border-2 border-white-300  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
         <h1 className="text-center text-2xl font-bold text-gray-900 mb-10">Registrarse</h1>
         <div className="space-y-4">
       

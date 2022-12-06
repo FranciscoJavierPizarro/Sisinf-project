@@ -163,7 +163,7 @@ export default function AddPlace(id) {
 
               <div >
                 <span className="ml-2 text-xl text-black">Añadir descripción del sitio:</span>
-                <textarea id="descp" maxlength="251" required className="h-full mt-2 w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
+                <textarea id="descp" maxlength="151" required className="h-full mt-2 w-full font-arial p-4 text-gray-600 bg-indigo-50 outline-none rounded-md" placeholder="Añadir descripción..."></textarea>
               </div>
               <span className="ml-1 text-lg text-gray-800">Marcar opción si es un monumento, bar, estatua o un paisaje<br></br></span>
               <div className="flex justify-center h-auto ">
