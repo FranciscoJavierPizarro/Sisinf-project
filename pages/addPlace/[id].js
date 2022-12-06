@@ -68,7 +68,7 @@ export default function AddPlace(id) {
           className="mt-8 h-full"
         >
 
-          <div className="bg-purple-200  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+          <div className=" bg-blue-300  border-2 border-white-300 rounded-md px-6 py-10 w-full ml-70 mx-auto">
             <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Añadir nombre de un sitio</h1>
             <div className="space-y-4 h-full">
             <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
@@ -155,7 +155,7 @@ export default function AddPlace(id) {
 
               <button
                 type="submit"
-                className="capitalize w-full tracking-normal px-2 py-3 focus:ring-black focus:ring-1 text-xs font-bold text-center text-black bg-purple-300 hover:bg-purple-400 rounded-md "
+                className="capitalize w-full tracking-normal px-2 py-3 focus:ring-black focus:ring-1 text-xs font-bold text-center text-black bg-blue-400 hover:bg-blue-600  rounded-md "
                 >
                 Añadir
               </button>

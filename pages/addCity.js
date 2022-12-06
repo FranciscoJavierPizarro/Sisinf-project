@@ -44,7 +44,7 @@ export default function AddCity() {
       }}
       className="mt-8"
       >
-      <div className="bg-purple-200  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+      <div className=" bg-blue-300 rounded-md px-6 py-10 w-full ml-70 mx-auto border-2 border-white-300">
         <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Añadir nombre de ciudad o pueblo</h1>
           <div className="space-y-4 h-full">
       
@@ -53,13 +53,13 @@ export default function AddCity() {
         <div className="flex gap-x-2 mt-1 transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500 ">
           <label className="block w-full">
           <span className="mt-10 px-1 text-sm text-xl text-gray-600">Añadir nombre de ciudad:</span>
-                    <input
+                    <input className="w-full border-white bg-transparent outline-none placeholder-black-400 "
                     type="name"
                     id="name"
                     name="name"
                     autoComplete="name"
-                    placeholder="Nombre de ciudad o pueblo"
-                    className="w-full border-white bg-transparent outline-none  focus:outline-none"
+                    placeholder=" Nombre de ciudad o pueblo"
+                    
                     required
                   />
                   </label>
@@ -105,7 +105,7 @@ export default function AddCity() {
               
         <button
                 type="submit"
-                className="capitalize w-full tracking-normal px-2 py-3 focus:ring-black focus:ring-1 text-xs font-bold text-center text-black bg-purple-300 hover:bg-purple-400 rounded-md "
+                className="capitalize w-full tracking-normal px-2 py-3 focus:ring-black focus:ring-1 text-xs font-bold text-center text-black bg-blue-400 hover:bg-blue-600 rounded-md "
                 >
                 Añadir
               </button>

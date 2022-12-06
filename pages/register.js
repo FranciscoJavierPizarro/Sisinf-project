@@ -36,7 +36,7 @@ export default function Register() {
       }}
       className="mt-4"
       >
-      <div className=" bg-purple-200  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+      <div className="  bg-blue-300  border-2 border-white-300  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
         <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Registrarse</h1>
         <div className="space-y-4">
       
@@ -102,7 +102,7 @@ export default function Register() {
           </div>    
         <button
                 type="submit"
-                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-base font-bold text-center text-black bg-purple-300 hover:bg-purple-400 rounded-md "
+                className="capitalize mt-4 w-full tracking-normal px-4 py-3 text-base font-bold text-center text-black  bg-blue-400 hover:bg-blue-600  rounded-md "
                 >
                 Registrarse
               </button>

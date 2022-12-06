@@ -72,7 +72,7 @@ export default function Sitio({ id,name, descp, mapsUrl, photoUrl, publisherId, 
                         <textarea id="contentt" minlength="1" maxlength="251" required className=" px-2 py-2 focus:ring-black focus:ring-1 w-5/6 font-arial h-36 text-black bg-gray-200 outline-none rounded-md" placeholder=" Nuevo comentario..."></textarea>
                     
                       <button type="submit"
-                          className="capitalize mt-5 w-1/2 tracking-normal px-4 py-3 text-xs font-bold text-center text-black bg-purple-300 rounded-md hover:bg-purple-400"
+                          className="capitalize mt-5 w-1/2 tracking-normal px-4 py-3 text-xs font-bold text-center text-black  rounded-md  bg-blue-400 hover:bg-blue-600 "
                       >
                           Añadir
                       </button>

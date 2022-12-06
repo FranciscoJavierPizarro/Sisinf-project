@@ -24,7 +24,7 @@ export default function Login() {
         >
           <div className="">
           
-      <div className=" bg-purple-200  bg-opacity-70 rounded-md px-6 py-10 w-full ml-70 mx-auto">
+      <div className="  bg-blue-300  border-2 border-white-300   rounded-md px-6 py-10 w-full ml-70 mx-auto">
         <h1 className="text-center text-2xl font-bold text-gray-500 mb-10">Login</h1>
         <div className="space-y-4">
       

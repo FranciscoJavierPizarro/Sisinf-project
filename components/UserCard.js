@@ -4,27 +4,9 @@ import { useSession } from "next-auth/react";
 import { FaCity,FaCommentAlt,FaHeart,FaMonument,FaUserAlt,FaInstagram,FaUserPlus} from "react-icons/fa";
 
 
-export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
+export default function UserCard({ name, gmail, admin, spam, id }) {
     const { data: session } = useSession()
-    const handleDelete = async (e) => {
-        e.preventDefault()
-        await fetch(`/api/log/` + id, {
-            method: "delete",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify("")
-        })
-        location.href = "/admin"
-    }
-
-    const handleNewAdmin = async (e) => {
-        e.preventDefault()
-        await fetch(`/api/log/` + id, {
-            method: "put",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ admin: true })
-        })
-        location.href = "/admin"
-    }
+    
     return (
      
         <div className="mb-6 card ml-12 bg-white  shadow-lg hover:shadow-2xl  flex flex-col items-center justify-center p-4 shadow-lg rounded-2xl w-2/3">

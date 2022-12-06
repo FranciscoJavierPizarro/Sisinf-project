@@ -5,7 +5,24 @@ import PlaceCard from '@/components/PlaceCard';
 import { useSession } from "next-auth/react"
 import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react';
-import { FiSearch,FiThermometer,FiCoffee,FiHome } from "react-icons/fi";
+import {FiMapPin, FiSearch,FiThermometer,FiCoffee,FiHome } from "react-icons/fi";
+
+import {Popover,PopoverHandler,PopoverContent,Button} from "@material-tailwind/react";
+ 
+ function tiempo({ city, cityPlaces, weather }) {
+  return (
+    
+    <Popover placement="right-start">
+      <PopoverHandler>
+        <Button variant="gradient">Right Start</Button>
+      </PopoverHandler>
+      <PopoverContent>
+      <FiThermometer className='fill-sky-200 mt-1'/> 
+      </PopoverContent>
+    </Popover>
+ 
+  );
+}
 
 export default function Home({ city, cityPlaces, weather }) {
   const { data: session } = useSession()
@@ -42,12 +59,37 @@ export default function Home({ city, cityPlaces, weather }) {
       <div className='w-full flex'>
         <Sidebar />
         <div className='flex-col content-center flex-1 text-2xl'>
-          <div className="mt-4 flex justify-center"> Estás visitando {city.name}</div>
-          {!(weather === undefined) && !(weather.main === undefined) && <><div className="flex justify-center text-2xl">
-            <FiThermometer className='fill-sky-200 mt-1'/> La temperatura es de {weather.main.temp} ºC</div></>}
-          <br></br>
 
-          <div className="flex justify-center h-24 ">
+        <div className="grid grid-cols-3 gap-1  justify-self-center mb-1 w-3/3   mt-10 ">
+
+        <div className="flex justify-right ml-20 text-2xl h-14 mt-5 ">
+          <Popover placement="right-start">
+              <PopoverHandler>
+                <Button color="red" variant=" border-white-200 ">Estás visitando {city.name}</Button>
+              </PopoverHandler>
+              <PopoverContent>
+                <div className="profile mx-auto rounded-full py-2 w-16 "> 
+                    <img src={city.photoUrl} alt="profile"></img>
+                </div>
+                
+                  <div className="name text-gray-800 text-2xl font-medium mt-4 ">
+                      <p>{city.name}</p>
+                      <p>{city.urlCity}</p>
+                      <p>{city.urlImg}</p>
+                      <p className="name text-gray-800 text-sm mt-3 " >{city.descp}</p>
+                
+                      <Link href={city.mapsUrl} className="hover:cursor-pointer">
+                              <FiMapPin className="mt-5 mr-6 ml-10 text-red-400 hover:cursor-pointer" />
+                      </Link>
+                  </div>
+                                  
+                            
+              </PopoverContent>
+            </Popover>
+          </div>
+          
+          
+           <div className="flex justify-center h-24  w-full ">
             <form
               method="post"
               onSubmit={async (e) => {
@@ -86,6 +128,27 @@ export default function Home({ city, cityPlaces, weather }) {
             </form>
 
           </div>
+
+          {!(weather === undefined) && !(weather.main === undefined) && <><div className="flex justify-self-end mr-20 text-2xl h-14 mt-5">
+          <Popover placement="left-start">
+            <PopoverHandler>
+              <Button variant="outlined border-white-200 ">El tiempo</Button>
+            </PopoverHandler>
+            <PopoverContent>
+            <div className="grid grid-cols-2  justify-self-center mb-1 w-3/3  text-gray-800 text-sm  mt-1 ">
+                <FiThermometer className='fill-sky-200 inline-block ml-2 mt-1 w-4 h-4 mb-3'/><p className="mb-3 mr-2">{weather.main.temp} ºC</p>  
+                
+              </div>
+              <p className="ml-2 text-gray-800 text-sm mr-3"> Sensación real : </p>
+              <p className="ml-2 text-gray-800 text-sm mr-3">{weather.main.feels_like} ºC</p>         
+            </PopoverContent>
+          </Popover>
+           </div></>}
+
+
+
+           </div>
+         
             <div className="flex justify-center">
           <button onClick={(e) => {
             e.preventDefault()
@@ -118,7 +181,7 @@ export default function Home({ city, cityPlaces, weather }) {
             </div>
             {session &&
               <Link href={"/addPlace/" + city.id} className='test-white'>
-                <div className='mx-auto capitalize w-40 mx-auto mt-8 text-black  px-4 py-3 text-xs font-bold text-center bg-purple-200 rounded-md hover:bg-purple-300 hover:cursor-pointer'>
+                <div className='mx-auto capitalize w-40 mx-auto mt-8 text-black  px-4 py-3 text-xs font-bold text-center  rounded-md bg-blue-400 hover:bg-blue-600  hover:cursor-pointer'>
                   Añadir sitio
                 </div>
               </Link>
