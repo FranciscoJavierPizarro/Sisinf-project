@@ -16,6 +16,7 @@ export default function AddPlace(id) {
       name: name.value,
       descp: descp.value,
       publisherId: session?.user?.email,
+      publisherName: session?.user?.name,
       mapsUrl: maps.value,
       photoUrl: photo.value,
       // publishingDate: new Date().toLocaleDateString('es-ES', {

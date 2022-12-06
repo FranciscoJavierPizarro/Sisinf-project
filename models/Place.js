@@ -16,6 +16,9 @@ const PlaceSchema = new mongoose.Schema({
   publisherId: {
     type: String,
   },
+  publisherName: {
+    type: String,
+  },
   publishingDate: {
     type: Date,
   },

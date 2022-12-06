@@ -87,7 +87,8 @@ export default function Register() {
                     id="password"
                     name="password"
                     autoComplete="password"
-                    placeholder="Contraseña"
+                    placeholder="Contraseña (mínimo 6 carácteres)"
+                    minlength="6"
                     className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none focus:outline-none"
                     required
                   />

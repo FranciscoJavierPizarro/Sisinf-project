@@ -3,7 +3,7 @@ import { FiTrash2, FiStar, FiHeart, FiMapPin } from "react-icons/fi";
 import React, { useState, useEffect, useRef } from 'react';
 import { useSession } from "next-auth/react"
 
-export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMaps, urlPhotos, autor }) {
+export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMaps, urlPhotos, autorG, autor }) {
     let { data: session } = useSession()
     const aux = session
     session = session?.session
@@ -119,7 +119,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                 <div className="ml-8 w-2/3 h-2/3 align-right">
                     <div className="flex mr-4 mt-3 justify-end text-right">
                         {session && <>
-                            {(session?.user?.email === autor || session?.user?.image === true) && <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e, idPlace, idCity) }}>
+                            {(session?.user?.email === autorG || session?.user?.image === true) && <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e, idPlace, idCity) }}>
                                 <FiTrash2 />
                             </button>}
                             <button onClick={(e) => {
@@ -150,7 +150,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                         </Link>}
                     
                     </div>
-                    <div className="text-black text-left text-base ">
+                    <div className="text-black text-left text-base w-full">
                         {descp}
                     </div>
                 </div>

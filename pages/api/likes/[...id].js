@@ -16,7 +16,14 @@ export default async function handler(req, res) {
     const {id} = req.query
     const placeId = id[0]
     const userId = id[1]
-    const likes = await Like.find({"placeId":placeId, "userId":userId})
-    res.status(200).json(likes.map(item => cleanSchema(item)))
+    if(userId === undefined) {
+      const likes = await Like.find({"placeId":placeId}).count()
+      res.status(200).json({nlikes:likes})
+    }
+    else {
+      const likes = await Like.find({"placeId":placeId, "userId":userId})
+      res.status(200).json(likes.map(item => cleanSchema(item)))
+    }
+    
   }
 }

@@ -81,7 +81,7 @@ export default function Sidebar() {
                     {session?.session?.user?.image === true && Adminlist}
                 </ul>
             {session && 
-            <button className='absolute bottom-0 ml-4 mb-4' onClick={() => signOut()}><FiLogOut className='h-11 w-11'/></button>
+            <button className='absolute bottom-0 ml-4 mb-4' onClick={() => {signOut();location.href = "/"}}><FiLogOut className='h-11 w-11'/></button>
             }
             </div>
             </aside>
