@@ -16,13 +16,21 @@ export default function Register() {
         admin:false,
         spam:spam.value
       }
-
-      await fetch(`/api/log/`, {
-        method: "post",
-        headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify(user)
-      })
-      location.href = "/"
+      const res = await fetch(` /api/log/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({username: gmail.value}),
+      }).then((res) => res.json())
+      if(res === null) {
+        await fetch(`/api/log/`, {
+          method: "post",
+          headers: {"Content-Type" : "application/json"},
+          body: JSON.stringify(user)
+        })
+        location.href = "/"
+      } else {
+        alert("Ya existe una cuenta asociada a ese correo electrónico")
+      }
     }
   
     return (
