@@ -35,7 +35,7 @@ export default function SitiosGuardados() {
     getPlaces().catch(console.error)
     
 
-  }, [session.user.email, status])
+  }, [session?.user?.email, status])
 
   return (
     <>
