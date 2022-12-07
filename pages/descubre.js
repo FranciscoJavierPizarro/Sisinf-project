@@ -77,7 +77,7 @@ export default function Home({ places }) {
     <>
       <div className='w-full flex'>
         <Sidebar />
-        <div className=' flex-col content-center flex-1 text-2xl'>
+        <div className='flex-col content-center flex-1 text-2xl'>
             <div className="flex justify-center h-24 ">
             <form
               method="post"
@@ -96,7 +96,7 @@ export default function Home({ places }) {
                         type="name"
                         id="name"
                         name="name"
-                        placeholder="Busca un sitio"
+                        placeholder="Descubre un sitio"
                         autoComplete="name"
                         className="px-2 h-full text-md block rounded-l-lg w-full
                 bg-white border-2 border-cyan-900 placeholder-gray-600 shadow-md focus:placeholder-gray-500 

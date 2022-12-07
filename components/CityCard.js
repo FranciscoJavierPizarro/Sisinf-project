@@ -44,7 +44,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
                 </div>
                 <div className="w-2/3 ml-8 h-full">
 
-                    <div className="capitalize flex w-full align-left font-semibold mt-8">
+                    <div className="uppercase text-xl flex w-full align-left font-semibold mt-8">
 
                         {title}
                         <Link href={urlMaps} className="hover:cursor-pointer">

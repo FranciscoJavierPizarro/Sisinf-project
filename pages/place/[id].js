@@ -39,7 +39,7 @@ export default function Sitio({ id, name, descp, mapsUrl, photoUrl, publisherId,
 
           <div className="relative text-black text-xl bg-white h-full w-1/3 rounded-l-lg">
 
-            <div className="mt-5 flex text-3xl w-full align-left font-semibold ml-8">
+            <div className="uppercase mt-5 flex text-2xl w-full align-left font-semibold ml-8">
               {name}
               <Link href={mapsUrl} className="hover:cursor-pointer">
                 <FiMapPin className="ml-4 text-red-600 hover:cursor-pointer" />
@@ -48,12 +48,12 @@ export default function Sitio({ id, name, descp, mapsUrl, photoUrl, publisherId,
             <div className="mt-8 ml-8 rounded-2xl items-justify-center">
               <img src={photoUrl} className="mx-auto w-1/2" />
             </div>
-            <h1 className="text-black text-xl ml-8 mt-4 w-5/6 h-1/6">
+            <h1 className="px-2 text-black text-xl ml-8 mt-4 w-5/6 h-1/6 rounded-lg border-2 border-black text-ellipsis">
               {descp}
               </h1>
               <div className="flex">
               <div className="container mx-auto pr-4 mt-5">
-                <div className="w-5/6 bg-white  mx-auto rounded-sm  shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-100 ">
+                <div className="w-5/6 bg-white  mx-auto rounded-sm shadow-lg ">
                   <div className="h-8 bg-purple-400 ">
                     <FaHeart className="inline-block w-8 h-6 ml-4  text-black-400 " />
                   </div>
@@ -65,7 +65,7 @@ export default function Sitio({ id, name, descp, mapsUrl, photoUrl, publisherId,
                 </div>
               </div>
               <div className="container mx-auto pr-4 mt-5 ">
-                <div className="w-5/6 bg-white  mx-auto rounded-sm  shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-100 ">
+                <div className="w-5/6 bg-white  mx-auto rounded-sm  shadow-lg ">
                   <div className="h-8 bg-purple-400 ">
                     <FaBookmark className="inline-block w-8 h-6 ml-4  text-black-400 " />
                   </div>

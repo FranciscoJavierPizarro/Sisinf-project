@@ -141,7 +141,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
                         </>}
                     </div>
                     <div className="mt-1 flex w-full">
-                    <div className="flex text-2xl w-auto align-left font-semibold">
+                    <div className="uppercase flex text-xl w-auto align-left font-semibold">
                         {title}
                         </div>
 
