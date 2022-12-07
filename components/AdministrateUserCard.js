@@ -2,6 +2,8 @@ import Link from "next/link"
 import { FiMapPin, FiX, FiCheck,FaUserPlus,FiAward } from "react-icons/fi";
 import { useSession } from "next-auth/react";
 
+import {TiUserDelete} from "react-icons/ti";
+import {FaUserCheck} from "react-icons/fa";
 
 export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
     const { data: session } = useSession()
@@ -36,15 +38,15 @@ export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
                     {
                     !admin &&
                     <>
-                        <button className="bg-blue-200 hover:cursor-pointer" onClick={(e) => {
+                        <button className="bg-transparent hover:cursor-pointer" onClick={(e) => {
                             handleNewAdmin(e)
                         }} >
-                            <FiCheck className="text-green-500" />
+                            < FaUserCheck className="text-green-500" />
                         </button>
-                        <button className="bg-blue-200 hover:cursor-pointer" onClick={(e) => {
+                        <button className="bg-transparent ml-2 hover:cursor-pointer" onClick={(e) => {
                             handleDelete(e)
                         }}>
-                            <FiX className="text-red-500" />
+                            <TiUserDelete className="text-red-500" />
                         </button>
                     </>
                 } {admin && <>

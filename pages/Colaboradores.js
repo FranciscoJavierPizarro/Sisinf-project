@@ -4,7 +4,7 @@ import Link from "next/link"
 import UserCard from '@/components/UserCard';
 import { FaCity,FaCommentAlt,FaHeart,FaMonument,FaUserAlt,FaInstagram,FaUserPlus} from "react-icons/fa";
 
-import { BsListStars} from "react-icons/bs";
+import { BsListStars,BsPersonCheckFill} from "react-icons/bs";
 export default function Colaboradores({ users, stats }) {
     return (
         <>

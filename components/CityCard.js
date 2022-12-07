@@ -1,7 +1,8 @@
 import Link from "next/link"
 import { FiMapPin, FiX, FiCheck, FiTrash2 } from "react-icons/fi";
 import { useSession } from "next-auth/react";
-
+import { RxCrossCircled} from "react-icons/rx";
+import { CiCircleCheck } from "react-icons/ci";
 
 export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Validacion, idCity }) {
     const { data: session } = useSession()
@@ -61,19 +62,20 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
                         {descp}
                     </p>
                     {session && <>
-                        <div className="grid place-items-end mr-7">
+                        <div className="name text-gray-800 text-2xl font-medium mt-4">
                             {
                                 !Validacion &&
                                 <>
-                                    <button className="bg-blue-200 hover:cursor-pointer" onClick={(e) => {
+                                    <button className="bg-transparent hover:cursor-pointer" onClick={(e) => {
                                         handleValid(e)
                                     }} >
-                                        <FiCheck className="text-green-500" />
+                                        <CiCircleCheck className="text-green-500" />
                                     </button>
-                                    <button className="bg-blue-200 hover:cursor-pointer" onClick={(e) => {
+                                    <button className="bg-transaprent ml-2 hover:cursor-pointer" onClick={(e) => {
                                         handleDeleteAdmin(e)
                                     }}>
-                                        <FiX className="text-red-500" />
+
+                                        < RxCrossCircled className="text-red-500" />
                                     </button>
                                 </>
                             }
