@@ -16,7 +16,7 @@ export default function Home({cities, users}) {
         <Sidebar/>
         <div className="grid mt-2 justify-items-center w-full">
         {cities.length > 0 && <h1 className="grid w-5/6 justify-items-center text-black text-2xl text-center font-bold">Aprobar ciudades
-         <div className="w-full mx-auto h-full text-black text-2xl text-center flex flex-wrap gap-x-2 justify-around">
+         <div className="font-normal w-full mx-auto h-full text-black text-2xl text-center flex flex-wrap gap-x-2 justify-around">
           {cities.map(u => <CityCard key={u.id} title={u.name} urlImg={u.photoUrl} urlMaps={u.mapsUrl} descp ={u.descp} urlCity={"/city/"+u.id} 
           likes={0} Validacion={u.Validacion} idCity={u.id}/>)} 
           </div>

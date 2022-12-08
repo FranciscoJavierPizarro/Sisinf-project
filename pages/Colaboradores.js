@@ -12,7 +12,17 @@ export default function Colaboradores({ users, stats }) {
                 <div className="flex w-full mt-3 text-2xl ">
                     <Sidebar />
                     <div className="grid w-full">
-                    <div className="px-6 py-8 w-full mx-auto h-5">
+                    
+                    <div className="px-10 py-1 w-full mx-auto h-5">
+                        <h1 className="text-center text-2xl font-bold text-white-500">Nuestros colaboradores</h1>
+                    </div>
+                    <div className="grid grid-cols-3 gap-1 justify-self-center mb-6 mt-10 w-2/3 ml-10 ">
+                   
+                    {users.map(u =>  <UserCard key={u.id} name={u.name}  gmail={u.gmail} spam={u.spam}/>)}
+
+                    </div>
+
+                    <div className="px-6 py-6 w-full mx-auto h-5">
                         <h1 className="text-center text-2xl font-bold text-white-500 mb-10">Estadísticas</h1>
                     </div>
 
@@ -104,16 +114,6 @@ export default function Colaboradores({ users, stats }) {
                             
 
                     </div>
-                    <div className="px-10 py-1 w-full mx-auto h-5">
-                        <h1 className="text-center text-2xl font-bold text-white-500">Nuestros colaboradores</h1>
-                    </div>
-                    <div className="grid grid-cols-3 gap-1 justify-self-center mb-10 mt-10 w-2/3 ml-10 ">
-                   
-                    {users.map(u =>  <UserCard key={u.id} name={u.name}  gmail={u.gmail} spam={u.spam}/>)}
-
-                    </div>
-
-                       
               
                     
                 </div>

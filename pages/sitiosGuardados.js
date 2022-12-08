@@ -22,7 +22,7 @@ export default function SitiosGuardados({savedPlaces,places}) {
         <Sidebar />
         <h1 className="w-2/3 h-full  text-white text-2xl text-center">
         <h1 className="mt-2 grid w-full justify-items-center text-black text-2xl text-center font-bold"> 
-          Estos son tus lugares guardados  ☜(ﾟヮﾟ☜) .
+          Estos son tus lugares guardados
         </h1>
         <div className="w-full capitalize mx-auto h-full text-white text-2xl text-center flex flex-wrap gap-x-2 justify-around">
           {places.filter(p => !(p === null) && filtro.includes(p._id)).map(u => <PlaceCard key={u._id + u.name} title={u.name}

@@ -68,7 +68,7 @@ export default function Register() {
           <label className="block w-full">
           <span className="mt-10 mb-10 px-1 text-sm text-xl text-black">Introduce un correo electrónico:</span>
                   <input
-                    type="gmail"
+                    type="email"
                     id="gmail"
                     name="gmail"
                     autoComplete="gmail"

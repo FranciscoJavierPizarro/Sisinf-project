@@ -164,7 +164,7 @@ export default function Home({ places }) {
                 </button>
               </div>
           <div className='flex-col content-center'>
-            <div className='mx-auto flex flex-wrap gap-x-4 w-4/5'>
+            <div className='mx-auto flex flex-wrap gap-x-4 w-4/5 mb-3'>
               {places.filter(u => u?.name.toLowerCase().includes(filtro.toLowerCase()) && (typeofplace === "" || typeofplace === u.kindOfPlace))
               .map(u => <PlaceCard key={u._id} title={u.name}
                 likes={u.favs} idPlace={u._id} idCity={u.cityId} urlMaps={u.mapsUrl} urlPhotos={u.photoUrl} descp={u.descp} autor={u.publisherId} />)}

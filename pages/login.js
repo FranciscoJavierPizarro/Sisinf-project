@@ -79,13 +79,6 @@ export default function Login() {
             </Link>
             </button>
           </div>
-          <div>
-            <button className="flex mt-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-10 mx-auto ml-50 rounded-full" 
-            onClick={() => signIn("github", { callbackUrl: '/' })}>
-              Sign in with github
-            </button>
-            
-          </div>
         </div>
 
       </form>
