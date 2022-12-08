@@ -64,7 +64,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
                     {session && <>
                         <div className="name text-gray-800 text-2xl font-medium mt-4">
                             {
-                                !Validacion &&
+                                !Validacion && session?.session?.user?.image === true &&
                                 <>
                                     <button className="bg-transparent hover:cursor-pointer" onClick={(e) => {
                                         handleValid(e)
