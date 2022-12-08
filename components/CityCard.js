@@ -38,7 +38,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
     return (
 
         <Link href={urlCity}>
-            <div className=" bg-white  shadow-lg hover:shadow-2xl hover:cursor-pointer flex text-black mt-8  w-1/3 h-44 shadow-lg rounded-2xl">
+            <div className=" bg-white  shadow-lg hover:shadow-2xl hover:cursor-pointer flex text-black mt-4 w-1/3 h-44 shadow-lg rounded-2xl">
                 <div className="w-24 h-24 mt-8 ml-8 rounded-2xl">
                     <img src={urlImg} className="mx-auto w-24 h-24" />
                 </div>

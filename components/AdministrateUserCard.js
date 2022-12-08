@@ -35,7 +35,6 @@ export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
                 </div>
                 <div className="name text-gray-800 text-2xl font-medium mt-4 ">
                     <p>{name}</p>
-                    <p>{gmail}</p>
                     {
                     !admin &&
                     <>
