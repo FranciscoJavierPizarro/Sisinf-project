@@ -123,12 +123,12 @@ export default function Sitio({ id, name, descp, mapsUrl, photoUrl, publisherId,
 
 export async function getServerSideProps(req) {
   const { id } = req.params
-  const { name, descp, mapsUrl, photoUrl, publisherId } = await fetch(process.env.NEXTAUTH_URL + "/api/places/" + id).then(res => res.json())
+  const { name, descp, mapsUrl, photoUrl, publisherId, publisherName } = await fetch(process.env.NEXTAUTH_URL + "/api/places/" + id).then(res => res.json())
   const { nlikes } = await fetch(process.env.NEXTAUTH_URL + "/api/likes/" + id).then(res => res.json())
   const { nsavedplaces } = await fetch(process.env.NEXTAUTH_URL + "/api/savedPlaces/" + id + "/0").then(res => res.json())
   const comms = await fetch(process.env.NEXTAUTH_URL + "/api/comments/" + id).then(res => res.json())
   return {
-    props: { id, name, descp, mapsUrl, photoUrl, publisherId, comms, nlikes, nsavedplaces }// will be passed to the page component as props
+    props: { id, name, descp, mapsUrl, photoUrl, publisherId, comms, nlikes, nsavedplaces, publisherName }// will be passed to the page component as props
   }
 }
 

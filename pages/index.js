@@ -82,7 +82,7 @@ export default function Home({ cities }) {
 
 export async function getServerSideProps() {
   let cities = await fetch(process.env.NEXTAUTH_URL + "/api/cities").then(res => res.json())
-  cities = cities.filter(p => p.Validacion)
+  // cities = cities.filter(p => p.Validacion)
   return {
     props: { cities }, // will be passed to the page component as props
   }
