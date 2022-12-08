@@ -3,6 +3,7 @@ import CryptoJS from "crypto-js"
 import crypto from "crypto"
 import Sidebar from "@/components/Sidebar"
 import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react';
 export default function Register() {
   const router = useRouter()
   const handleSubmit = async (e) => {
@@ -28,6 +29,11 @@ export default function Register() {
           headers: {"Content-Type" : "application/json"},
           body: JSON.stringify(user)
         })
+        signIn("credentials", {
+          username: gmail.value,
+          password: password.value,
+          callbackUrl: '/'
+        } )
         router.push("/")
       } else {
         alert("Ya existe una cuenta asociada a ese correo electrónico")
