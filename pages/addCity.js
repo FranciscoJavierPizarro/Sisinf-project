@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout"
 import { useSession } from "next-auth/react"
 import Sidebar from "@/components/Sidebar"
-
+import { useRouter } from 'next/router'
 export default function AddCity() {
-    
+  const router = useRouter()
   let { data: session } = useSession()
   session = session?.session
   const handleSubmit = async (e) => {
@@ -30,7 +30,7 @@ export default function AddCity() {
         headers: {"Content-Type" : "application/json"},
         body: JSON.stringify(city)
       })
-      location.href = "/"
+      router.push("/")
     }
   
     return (
@@ -75,7 +75,6 @@ export default function AddCity() {
                     autoComplete="maps"
                     placeholder="Enlace a Google Maps "
                     className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none  focus:outline-none"
-                    required
                   />
                   </label>
                 

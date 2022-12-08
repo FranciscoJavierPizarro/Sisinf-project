@@ -3,8 +3,9 @@ import { useSession } from "next-auth/react"
 import { FiCoffee,FiHome,FiImage,FiUser } from "react-icons/fi";
 import Sidebar from "@/components/Sidebar"
 import React, { useState } from 'react';
+import { useRouter } from 'next/router'
 export default function AddPlace(id) {
-
+  const router = useRouter()
   let { data: session } = useSession()
   session = session?.session
   const [typeofplace, setType] = useState("");
@@ -34,7 +35,7 @@ export default function AddPlace(id) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(place)
     })
-    location.href = "/city/" + id
+    router.push("/city/" + id)
   }
 
   function monumento() {
@@ -139,7 +140,6 @@ export default function AddPlace(id) {
                     autoComplete="maps"
                     placeholder="Enlace a Google Maps "
                     className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none focus:outline-none"
-                    required
                   />
                   </label>
                 

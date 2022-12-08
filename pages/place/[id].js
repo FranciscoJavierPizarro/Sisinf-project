@@ -5,15 +5,16 @@ import Sidebar from '@/components/Sidebar';
 import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import CommentCard from "@/components/CommentCard";
+import { useRouter } from 'next/router'
 export default function Sitio({ id, name, descp, mapsUrl, photoUrl, publisherId, publisherName, comms, nlikes, nsavedplaces }) {
-
+  const router = useRouter()
   let { data: session } = useSession()
   session = session?.session
   const handleSubmit = async (e) => {
     e.preventDefault()
     const { contentt } = e.target
     const comment = {
-      userName: session?.user?.email,
+      userName: session?.user?.name,
       userId: session?.user?.email,
       // publishingDate: new Date().toLocaleDateString('es-ES', {
       //   year: 'numeric',
@@ -29,7 +30,7 @@ export default function Sitio({ id, name, descp, mapsUrl, photoUrl, publisherId,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comment)
     })
-    location.href = "/place/" + id
+    router.push("/place/" + id)
   }
   return (
     <>

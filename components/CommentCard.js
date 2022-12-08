@@ -1,8 +1,10 @@
 import Link from "next/link"
 import { FiMessageSquare,FiTrash2 } from "react-icons/fi";
+import { useRouter } from 'next/router'
 import { useSession } from "next-auth/react"
 export default function CommentCard({ autor, fecha, contenido, idComment, idPlace }) {
   let { data: session } = useSession()
+  const router = useRouter()
   session = session?.session
   const handleDelete = async (e) => {
     e.preventDefault()
@@ -11,7 +13,7 @@ export default function CommentCard({ autor, fecha, contenido, idComment, idPlac
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify("")
     })
-    location.href = "/place/" + idPlace
+    router.push("/place/" + idPlace)
   }
   return (
     <>
@@ -25,7 +27,7 @@ export default function CommentCard({ autor, fecha, contenido, idComment, idPlac
           <p>{fecha}</p>
         </div>
         <div className="text-justify mx-2 text-lg">{contenido}</div>
-        {(session?.user?.email === autor || session?.user?.image === true) && <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e) }}>
+        {(session?.user?.name === autor || session?.user?.image === true) && <button className="ml-2 text-gray-500" onClick={(e) => { handleDelete(e) }}>
           <FiTrash2 />
         </button>}
 

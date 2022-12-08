@@ -4,9 +4,10 @@ import { useSession } from "next-auth/react";
 
 import {TiUserDelete} from "react-icons/ti";
 import {FaUserCheck} from "react-icons/fa";
-
+import { useRouter } from 'next/router'
 export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
     const { data: session } = useSession()
+    const router = useRouter()
     const handleDelete = async (e) => {
         e.preventDefault()
         await fetch(`/api/log/` + id, {
@@ -14,7 +15,7 @@ export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
         })
-        location.href = "/admin"
+        router.push("/admin")
     }
 
     const handleNewAdmin = async (e) => {
@@ -24,7 +25,7 @@ export default function AdministrateUserCard({ name, gmail, admin, spam, id }) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ admin: true })
         })
-        location.href = "/admin"
+        router.push("/admin")
     }
     return (
         <>{session?.session?.user?.image === true && <>

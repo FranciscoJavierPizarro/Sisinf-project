@@ -2,9 +2,10 @@ import Link from "next/link"
 import { FiTrash2, FiStar, FiHeart, FiMapPin } from "react-icons/fi";
 import React, { useState, useEffect, useRef } from 'react';
 import { useSession } from "next-auth/react"
-
+import { useRouter } from 'next/router'
 export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMaps, urlPhotos, autorG, autor }) {
     let { data: session } = useSession()
+    const router = useRouter()
     const aux = session
     session = session?.session
 
@@ -38,7 +39,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
         })
-        location.href = "/city/" + city
+        router.push("/city/" + city)
     }
 
     const handleLike = async (e) => {
@@ -112,7 +113,7 @@ export default function PlaceCard({ title, likes, descp, idPlace, idCity, urlMap
     return (
         
         <Link href={"/place/" + idPlace} className="hover:cursor-pointer">
-            <div className="bg-white  shadow-lg hover:shadow-2xl flex text-black mx-auto mt-8 w-5/12 h-40 shadow-lg rounded-2xl hover:cursor-pointer">
+            <div className="bg-white  shadow-lg hover:shadow-2xl flex text-black mx-auto mt-8 w-5/12 h-44 shadow-lg rounded-2xl hover:cursor-pointer">
                 <div className="w-28 h-28 mt-6 ml-8 rounded-2xl">
                     <img src={urlPhotos} className="mx-auto w-28 h-28" />
                 </div>

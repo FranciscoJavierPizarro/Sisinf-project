@@ -2,8 +2,9 @@ import Layout from "@/components/Layout"
 import CryptoJS from "crypto-js"
 import crypto from "crypto"
 import Sidebar from "@/components/Sidebar"
+import { useRouter } from 'next/router'
 export default function Register() {
-    
+  const router = useRouter()
   const handleSubmit = async (e) => {
       e.preventDefault()
       const { name, gmail, password,spam } = e.target
@@ -27,7 +28,7 @@ export default function Register() {
           headers: {"Content-Type" : "application/json"},
           body: JSON.stringify(user)
         })
-        location.href = "/"
+        router.push("/")
       } else {
         alert("Ya existe una cuenta asociada a ese correo electrónico")
       }
@@ -99,13 +100,12 @@ export default function Register() {
             <label className="block w-full">
               <span className="mt-10 px-1 text-sm text-xl text-black">Enlace a tu cuenta de tu RRSS favorita para que te sigan:</span>
               <input
-                type="spam"
+                type="url"
                 id="spam"
                 name="spam"
                 autoComplete="spam"
                 placeholder="Enlace a otra RRSS"
                 className="placeholder:text-stone-600 w-full border-white bg-transparent outline-none focus:outline-none"
-                required
                 />
             </label>
           </div>    

@@ -3,10 +3,10 @@ import { FiMapPin, FiX, FiCheck, FiTrash2 } from "react-icons/fi";
 import { useSession } from "next-auth/react";
 import { RxCrossCircled} from "react-icons/rx";
 import { CiCircleCheck } from "react-icons/ci";
-
+import { useRouter } from 'next/router'
 export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Validacion, idCity }) {
     const { data: session } = useSession()
-
+    const router = useRouter()
     const handleValid = async (e) => {
         e.preventDefault()
         await fetch(`/api/cities/` + idCity, {
@@ -14,7 +14,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Validacion: true })
         })
-        location.href = "/admin"
+        router.push("/admin")
     }
     const handleDelete = async (e) => {
         e.preventDefault()
@@ -23,7 +23,7 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
         })
-        location.href = "/"
+        router.push("/")
     }
     const handleDeleteAdmin = async (e) => {
         e.preventDefault()
@@ -32,13 +32,13 @@ export default function CityCard({ title, descp, urlMaps, urlImg, urlCity, Valid
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify("")
         })
-        location.href = "/admin"
+        router.push("/admin")
     }
 
     return (
 
         <Link href={urlCity}>
-            <div className=" bg-white  shadow-lg hover:shadow-2xl hover:cursor-pointer flex text-black mt-8  w-1/3 h-40 shadow-lg rounded-2xl">
+            <div className=" bg-white  shadow-lg hover:shadow-2xl hover:cursor-pointer flex text-black mt-8  w-1/3 h-44 shadow-lg rounded-2xl">
                 <div className="w-24 h-24 mt-8 ml-8 rounded-2xl">
                     <img src={urlImg} className="mx-auto w-24 h-24" />
                 </div>
